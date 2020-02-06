@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.all-wrap {
+  flex: 1 0 auto;
+}
+
+.footer-wrap {
+ flex: 0 0 auto;
+}
+
+.menu-main {
+  list-style: none;
+  margin: 5px 0 5px;
+  padding: 0px 0 5px;
+  text-align: center;
+  background: white;
+}
+.menu-main li {display: inline-block;}
+
+.menu-main a {
+  text-decoration: none;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  letter-spacing: 2px;
+  margin: 0 34px 0 30px;
+  font-size: 17px;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.menu-main a, .menu-main a:visited {color: #9d999d;}
+.menu-main a.current, .menu-main a:hover{color: #feb386;}
+
+.dropbtn {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: #9d999d;
+  background: white;
+  padding: 16px;
+  font-size: 17px;
+  border: none;
+  text-align: center;
+  transition: color .2s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.dropbtn:hover {
+    color: #feb386;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #9d999d;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+@media only screen and (min-width: 450px) and (max-width: 1000px) {
+    .menu-main li {
+        display: block;
+        padding: 5px 0 5px 0;
+    }
+
+    .menu-main a {
+        font-size: 7vw;
+    }
+
+    .dropbtn {
+        font-size: 8vw;
+        padding: 5px 0 5px 0;
+    }
+}

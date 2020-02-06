@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');.form-container {
+    text-align: center;
+    margin: 10px;
+}
+
+.description  {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    margin-top:20px;
+}
+.form-container {
+    background-color: #feb386;
+    padding-bottom: 1px;
+    padding-top: 5px;
+    margin:0 15% 0 15%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.description-input {
+    padding: 10px;
+    text-align: center;
+}
+
+.price-input {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding: 5px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.name-input {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding: 5px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.description-label {
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+textarea {
+	resize: none;
+	width: 60%;
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding-left:5px;
+}
+
+input, select {
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+padding-left: 5px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+select:focus {
+    outline: none;
+}
+
+input[type=submit] {
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px
+    cursor: pointer;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 16px;
+}
+
+.dropdown-status {
+    float: right;
+    padding-right: 5px;
+}
+
+.status-label {
+    display:inline-block;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.date {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    display: inline-block;
+}
+
+.start-date {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    display: inline-block;
+}
+
+.end-date {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    display: inline-block;
+}
+
+.info-container {
+    padding-left: auto;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.price-info {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding: 5px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.sold-info {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding: 5px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+.bet-input-container {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding: 5px;
+    display: inline-block;
+}
+
+.bet-container {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding: 5px;
+    display: inline-block;
+}
+
+.bidder-container {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding: 5px;
+    display: inline-block;
+}
+
+.bottom-info-container {
+    margin-top: 30px;
+}
+
+.message-container {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    padding: 5px;
+}
+
+@media only screen and (min-width: 450px) and (max-width: 1000px) {
+    .bet-label {
+        font-size: 6vw;
+    }
+
+    .status-label {
+        display:block;
+        font-size: 5vw;
+    }
+
+    .message-container {
+        font-size: 5vw;
+    }
+
+    .price-info {
+        display: block;
+        font-size: 5vw;
+    }
+
+    .sold-info {
+            display: block;
+            font-size: 5vw;
+    }
+
+    select {
+        font-size: 7vw;
+        padding-top:5px;
+        text-align:center;
+        text-align-last:center;
+    }
+
+    .option-container {
+        font-size: 2vw;
+    }
+
+    .date {
+        display: block;
+        font-size: 5vw;
+    }
+
+    .start-date {
+            display: block;
+            font-size: 5vw;
+    }
+
+    .end-date {
+        display: block;
+        font-size: 5vw;
+    }
+
+    .dropdown-status {
+        float: none;
+        padding-right: 0px;
+    }
+
+	.name-input {
+	    display: block;
+	}
+
+	.label {
+	    font-size: 5vw;
+	}
+
+	.price-input {
+    	display: block;
+    }
+
+    input[type=text] {
+        font-size: 5vw;
+        padding-top:5px;
+        text-align:center;
+        padding: 2% 5% 2% 5%;
+        box-sizing: border-box;
+    }
+
+   textarea {
+            padding: 0 10% 5% 5%;
+            box-sizing: border-box;
+            width: 90%;
+            font-size: 5vw;
+        }
+
+   .form-container {
+        margin: 0 0 0 0;
+   }
+
+
+    input[type=submit] {
+        font-size: 6vw;
+    }
+
+    .bet-container {
+        display:block;
+        font-size: 5vw;
+    }
+
+    .bidder-container {
+        display:block;
+        font-size: 5vw;
+    }
+}
