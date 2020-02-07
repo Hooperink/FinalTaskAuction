@@ -145,6 +145,15 @@
 }
 
 @media only screen and (min-width: 450px) and (max-width: 1000px) {
+    .loop-action a {
+        margin: 50px;
+        font-size: 5vw;
+    }
+
+    .loop-action {
+        opacity: 1;
+    }
+
     .next-pagination {
         font-size: 6vw;
         display: block;

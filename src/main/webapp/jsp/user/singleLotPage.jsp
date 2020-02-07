@@ -2,11 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<fmt:setBundle basename="messages"/>
+<fmt:setLocale value="${sessionScope.lang}" scope="session"/>
+
 <html>
 	<head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <script type="text/javascript" src="${pageContext.request.contextPath}/js/inputValidator.js"></script>
 	    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createLot.css"/>
+	    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	</head>
 	<body>
         <div class = "all-wrap">
@@ -25,40 +29,43 @@
                             <input type="hidden" name="betId" value="${bet.id}"/>
                             <div class="info-container">
                                 <div class="name-input">
-                                    <div class="label">Name:</div>
+                                    <div class="label"> <fmt:message key="label.Name"/>:</div>
                                     ${lot.name}
                                 </div>
                                 <div class="date">
                                     <div class="start-date-label">
-                                        Start of sales:
+                                         <fmt:message key="label.Start_of_sales"/>:
                                     </div>
                                     <fmt:formatDate value= "${lot.startSellDate}" pattern="MM/dd/yyyy HH:mm"/>
                                 </div>
                             </div>
                             <div class="description">
-                                <div class="label">Description: </div>
+                                <div class="label"> <fmt:message key="label.Description"/>: </div>
                                 <div class="description-input">
                                     <textarea cols="40" rows="15" readonly required>${lot.description} </textarea>
                                 </div>
                             </div>
                             <div class="price-info">
-                                    <div class="label"> Price: </div>
+                                    <div class="label">  <fmt:message key="label.Price"/>: </div>
                                     ${lot.price}
                             </div>
                             <div class="bet-container">
-                               <div class="bet-label">Last bet:</div>
-                               <c:out value= "${bet.bet == null ? 'None' : bet.bet}"/>
+                               <fmt:message key="label.None" var="NoneValue"/>
+                               <div class="bet-label"> <fmt:message key="label.Last_bet"/>:</div>
+                               <c:out value= "${bet.bet == null ? NoneValue : bet.bet}"/>
                             </div>
                             <div class="bidder-container">
-                                <div class="last-bet-label">Bidder: </div>
-                                <c:out value= "${user.login == null ? 'None' : user.login}"/>
+                                <div class="last-bet-label"><fmt:message key="label.Bidder"/>: </div>
+                                <c:out value= "${user.login == null ? NoneValue : user.login}"/>
                             </div>
                             <div class="bet-input-container">
-                                <div class="bet-label">Bet: </div>
+                                <div class="bet-label"><fmt:message key="label.Bet"/>:</div>
                                 <input type="text" name="betAmount" id="place-bet">
                             </div>
-                            <div class="message-container">${requestScope.message}</div>
-                            <input type="submit" value="Place bet">
+                            <c:if test="${requestScope.message != null}">
+                                <div class="message-container"><fmt:message key="label.${requestScope.message}"/></div>
+                            </c:if>
+                            <input type="submit" value=<fmt:message key="label.Place_bet"/>>
                         </form>
                     </div>
                 </c:when>
@@ -70,35 +77,35 @@
                             <input type="hidden" name="betId" value="${bet.id}"/>
                             <div class="info-container">
                                 <div class="name-input">
-                                    <div class="label">Name:</div>
+                                    <div class="label"><fmt:message key="label.Name"/>:</div>
                                     <input type="text" name="name" required minlength="5" maxlength="25" value="${lot.name}">
                                 </div>
                                 <div class="price-info">
-                                    <div class="label"> Price: </div>
+                                    <div class="label"> <fmt:message key="label.Price"/>: </div>
                                     ${lot.price}
                                 </div>
                                 <div class="date">
                                     <div class="start-date-label">
-                                        Start of sales:
+                                        <fmt:message key="label.Start_of_sales"/>:
                                     </div>
                                     <fmt:formatDate value= "${lot.startSellDate}" pattern="MM/dd/yyyy HH:mm"/>
                                 </div>
                             </div>
                             <div class="bet-container">
-                               <div class="label">Last bet:</div>
-                               <c:out value= "${bet.bet == null ? 'None' : bet.bet}"/>
+                               <div class="label"><fmt:message key="label.Last_bet"/>:</div>
+                               <c:out value= "${bet.bet == null ? NoneValue : bet.bet}"/>
                             </div>
                             <div class="bidder-container">
-                                <div class="label">Bidder: </div>
-                                <c:out value= "${user.login == null ? 'None' : user.login}"/>
+                                <div class="label"><fmt:message key="label.Bidder"/>: </div>
+                                <c:out value= "${user.login == null ? NoneValue : user.login}"/>
                             </div>
                             <div class="description">
-                                <div class="description-label">Description: </div>
+                                <div class="description-label"><fmt:message key="label.Description"/>: </div>
                                 <div class="description-input">
                                     <textarea name="description" cols="40" rows="15" required>${lot.description}</textarea>
                                 </div>
                              </div>
-                            <input type="submit" value="Edit">
+                            <input type="submit" value=<fmt:message key="label.Edit"/>>
                         </form>
                     </div>
                 </c:otherwise>

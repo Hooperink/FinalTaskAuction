@@ -10,6 +10,8 @@ import epam.by.utils.UserBalanceCalculator;
 public class CommandFactory {
     public static Command create(String command) throws UnknownCommandException {
         switch (command) {
+            case "changeLanguage":
+                return new ChangeLanguage();
             case "placeBet":
                 return new PlaceBetCommand(new BetService(new DaoHelperFactory(), new UserBalanceCalculator()));
             case "login":
