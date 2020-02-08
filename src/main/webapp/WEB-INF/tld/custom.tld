@@ -1,0 +1,21 @@
+<taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee web-jsptaglibrary_2_1.xsd"
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        version= "2.1">
+    <tlib-version>1.0</tlib-version>
+    <short-name>ctg</short-name>
+    <uri>customtags</uri>
+    <tag>
+            <name>currency-exchange</name>
+            <tag-class>epam.by.tags.CurrencyTag</tag-class>
+            <body-content>empty</body-content>
+            <attribute>
+                <name>currency</name>
+                <required>true</required>
+            </attribute>
+            <attribute>
+                <name>locale</name>
+                <required>true</required>
+            </attribute>
+    </tag>
+</taglib>
