@@ -7,15 +7,17 @@
     <uri>customtags</uri>
     <tag>
             <name>currency-exchange</name>
-            <tag-class>epam.by.tags.CurrencyTag</tag-class>
+            <tag-class>epam.by.Auction.tags.CurrencyTag</tag-class>
             <body-content>empty</body-content>
             <attribute>
                 <name>currency</name>
                 <required>true</required>
+                <rtexprvalue>true</rtexprvalue>
             </attribute>
             <attribute>
                 <name>locale</name>
                 <required>true</required>
+                <rtexprvalue>true</rtexprvalue>
             </attribute>
     </tag>
 </taglib>

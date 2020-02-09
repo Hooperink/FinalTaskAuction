@@ -32,7 +32,8 @@
             </div>
             <div class="user-info-container">
                 <fmt:message key="label.Hello"/>, <b>${user.login}</b>,
-                <fmt:message key="label.your_balance_is"/>: ${user.balance}
+                <fmt:message key="label.your_balance_is"/>:
+                <ctg:currency-exchange currency="${user.balance}" locale ="${sessionScope.lang}"/>
             </div>
             <div class="update-account-container">
                 <form method="post" action="controller">

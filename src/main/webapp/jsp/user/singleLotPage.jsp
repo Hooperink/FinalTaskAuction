@@ -91,6 +91,7 @@
                                     <fmt:formatDate value= "${lot.startSellDate}" pattern="MM/dd/yyyy HH:mm"/>
                                 </div>
                             </div>
+                            <fmt:message key="label.None" var="NoneValue"/>
                             <div class="bet-container">
                                <div class="label"><fmt:message key="label.Last_bet"/>:</div>
                                <c:out value= "${bet.bet == null ? NoneValue : bet.bet}"/>
