@@ -4,7 +4,8 @@ public enum LotStatus {
     MODERATION("moderation"),
     ACTIVE("active"),
     NOT_ACTIVE("not_active"),
-    SOLD("sold");
+    SOLD("sold"),
+    DELETED("deleted");
 
     private String status;
 

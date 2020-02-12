@@ -29,20 +29,20 @@
                             <input type="hidden" name="betId" value="${bet.id}"/>
                             <div class="info-container">
                                 <div class="name-input">
-                                    <div class="label"> <fmt:message key="label.Name"/>:</div>
+                                    <div class="label"> <fmt:message key="label.Lot_name"/>:</div>
                                     ${lot.name}
                                 </div>
                                 <div class="date">
                                     <div class="start-date-label">
                                          <fmt:message key="label.Start_of_sales"/>:
                                     </div>
-                                    <fmt:formatDate value= "${lot.startSellDate}" pattern="MM/dd/yyyy HH:mm"/>
+                                    <fmt:formatDate value= "${lot.startSellDate}"/>
                                 </div>
                             </div>
                             <div class="description">
                                 <div class="label"> <fmt:message key="label.Description"/>: </div>
-                                <div class="description-input">
-                                    <textarea cols="40" rows="15" readonly required>${lot.description} </textarea>
+                                <div class="description-container">
+                                    <div class="description-text">${lot.description}</div>
                                 </div>
                             </div>
                             <div class="price-info">
@@ -62,11 +62,12 @@
                                 <div class="bet-label"><fmt:message key="label.Bet"/>:</div>
                                 <input type="text" name="betAmount" id="place-bet">
                             </div>
-                            <c:if test="${requestScope.message != null}">
-                                <div class="message-container"><fmt:message key="label.${requestScope.message}"/></div>
-                            </c:if>
-                            <input type="submit" value=<fmt:message key="label.Place_bet"/>>
+                            <fmt:message key="label.Place_bet" var="placeBet"/>
+                            <input type="submit" value="${placeBet}">
                         </form>
+                        <c:if test="${requestScope.message != null}">
+                            <div class="message-container"><fmt:message key="label.${requestScope.message}"/></div>
+                        </c:if>
                     </div>
                 </c:when>
                 <c:otherwise>
@@ -77,7 +78,7 @@
                             <input type="hidden" name="betId" value="${bet.id}"/>
                             <div class="info-container">
                                 <div class="name-input">
-                                    <div class="label"><fmt:message key="label.Name"/>:</div>
+                                    <div class="label"><fmt:message key="label.Lot_name"/>:</div>
                                     <input type="text" name="name" required minlength="5" maxlength="25" value="${lot.name}">
                                 </div>
                                 <div class="price-info">
@@ -88,7 +89,7 @@
                                     <div class="start-date-label">
                                         <fmt:message key="label.Start_of_sales"/>:
                                     </div>
-                                    <fmt:formatDate value= "${lot.startSellDate}" pattern="MM/dd/yyyy HH:mm"/>
+                                    <fmt:formatDate value= "${lot.startSellDate}"/>
                                 </div>
                             </div>
                             <fmt:message key="label.None" var="NoneValue"/>

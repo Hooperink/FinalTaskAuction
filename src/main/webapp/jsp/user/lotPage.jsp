@@ -11,6 +11,7 @@
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
 	    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/lotStyle.css"/>
+	    <script type="text/javascript" src="${pageContext.request.contextPath}/js/showDeleteButton.js"></script>
 	    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	</head>
 	<body>
@@ -20,9 +21,14 @@
                     <div class="product-wrap">
                         <a href="${request.contextPath}controller?command=getSingleLot&id=${lot.id}"><img src="https://185504.selcdn.ru/static/dolinaroz.reshop.by/catalog/764/4818233015c3519b99ec8f_medium.jpg"></a>
                         <div class="loop-action">
-                            <a href="${request.contextPath}controller?command=getSingleLot&id=${lot.id}" class="add-to-cart"><fmt:message key="label.Show"/></a>
+                            <a href="${request.contextPath}controller?command=getSingleLot&id=${lot.id}" class="add-to-cart"><fmt:message key="label.Show_lot"/></a>
                             <c:if test="${sessionScope.role == 'ADMIN'}">
-                                <a href="${request.contextPath}controller?command=deleteLot&id=${lot.id}" class="add-to-cart"> <fmt:message key="label.Delete"/></a>
+                                <a href="#" onclick="openForm(${lot.id}); return false;"><fmt:message key="label.Delete"/></a>
+                                <div class="form-popup" id="${lot.id}">
+                                    <fmt:message key="label.Are_you_sure?"/>
+                                    <a href="${request.contextPath}controller?command=deleteLot&id=${lot.id}"> <fmt:message key="label.Delete"/></a>
+                                    <a href="#" onclick="closeForm(${lot.id}); return false;"><fmt:message key="label.Close"/></a>
+                                </div>
                             </c:if>
                         </div>
                     </div>

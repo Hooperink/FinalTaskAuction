@@ -3,10 +3,23 @@
     margin: 10px;
 }
 
+.description-container {
+    margin: 15 0 15 25%;
+    width: 50%;
+    background: white;
+    border-radius: 5px;
+}
+.description-text {
+    padding: 5px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
 .description  {
     font-family: 'Ubuntu Condensed', sans-serif;
     margin-top:20px;
 }
+
 .form-container {
     background-color: #feb386;
     padding-bottom: 1px;
@@ -123,8 +136,9 @@ input[type=submit] {
 
 .bet-input-container {
     font-family: 'Ubuntu Condensed', sans-serif;
-    padding: 5px;
-    display: inline-block;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .bet-container {
@@ -146,6 +160,7 @@ input[type=submit] {
 .message-container {
     font-family: 'Ubuntu Condensed', sans-serif;
     padding: 5px;
+    margin-bottom: 10px;
 }
 
 @media only screen and (min-width: 450px) and (max-width: 1000px) {

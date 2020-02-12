@@ -57,21 +57,26 @@ public class LotService {
             LotDao lotDao = daoHelper.createLotDao();
             BetDao betDao = daoHelper.createBetDao();
             UserDao userDao = daoHelper.createUserDao();
-            daoHelper.startTransaction();
-            Optional<Bet> betOptional = betDao.getByLotId(id);
-            if (betOptional.isPresent()) {
-                Bet bet = betOptional.get();
-                long buyerId = bet.getBuyerId();
-                Optional<User> optionalUser = userDao.getById(buyerId);
-                if (optionalUser.isPresent()) {
-                    User user = optionalUser.get();
-                    BigDecimal betAmount = bet.getBet();
-                    user = userBalanceCalculator.addToBalance(user, betAmount);
-                    userDao.save(user);
+            Optional<Lot> optionalLot = lotDao.getById(id);
+            if (optionalLot.isPresent()) {
+                daoHelper.startTransaction();
+                Optional<Bet> betOptional = betDao.getByLotId(id);
+                if (betOptional.isPresent()) {
+                    Bet bet = betOptional.get();
+                    long buyerId = bet.getBuyerId();
+                    Optional<User> optionalUser = userDao.getById(buyerId);
+                    if (optionalUser.isPresent()) {
+                        User user = optionalUser.get();
+                        BigDecimal betAmount = bet.getBet();
+                        user = userBalanceCalculator.addToBalance(user, betAmount);
+                        userDao.save(user);
+                    }
                 }
+                Lot lot = optionalLot.get();
+                lot.setStatus(LotStatus.DELETED);
+                lotDao.save(lot);
+                daoHelper.endTransaction();
             }
-            lotDao.removeById(id);
-            daoHelper.endTransaction();
         }
     }
 

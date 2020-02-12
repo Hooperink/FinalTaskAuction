@@ -1,6 +1,8 @@
 package epam.by.Auction.connection;
 
 import epam.by.Auction.exception.NoConnectionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -10,6 +12,9 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ConnectionPool {
+
+    public final static Logger logger = LogManager.getLogger(ConnectionFactory.class.getName());
+
     private Queue<ProxyConnection> availableConnections;
     private Queue<ProxyConnection> connectionInUse;
 
@@ -49,12 +54,13 @@ public class ConnectionPool {
 
     public ProxyConnection getConnectionFromPool() {
         getConnectionLock.lock();
-        ProxyConnection proxyConnection = null;
+        ProxyConnection proxyConnection;
         try {
             semaphore.tryAcquire(TIMEOUT, TimeUnit.HOURS);
             proxyConnection = availableConnections.poll();
             connectionInUse.offer(proxyConnection);
         } catch (InterruptedException e) {
+            logger.error("No free connection. ", e);
             throw new NoConnectionException(e);
         } finally {
             getConnectionLock.unlock();

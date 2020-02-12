@@ -14,6 +14,7 @@ import java.util.List;
 
 public class GetListLotCommand implements Command {
 
+    public static final int RECORDS_PER_PAGE = 8;
     private LotService lotService;
     private BetService betService;
 
@@ -26,11 +27,10 @@ public class GetListLotCommand implements Command {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException {
         String pageString = request.getParameter("page");
         int page =  NumberUtils.isCreatable(pageString) ? Integer.parseInt(pageString) - 1 : 0;
-        int recordPerPage = 8;
-        List<Lot> lotList = lotService.getLotByStatus(LotStatus.ACTIVE, recordPerPage, page * recordPerPage);
+        List<Lot> lotList = lotService.getLotByStatus(LotStatus.ACTIVE, RECORDS_PER_PAGE, page * RECORDS_PER_PAGE);
         List<Bet> betList = betService.getAllBets();
         int amountOfRows = lotService.getAmountOfRows(LotStatus.ACTIVE);
-        int amountOfPages = (int) Math.ceil(amountOfRows * 1.0 / recordPerPage);
+        int amountOfPages = (int) Math.ceil(amountOfRows * 1.0 / RECORDS_PER_PAGE);
         request.setAttribute("lots", lotList);
         request.setAttribute("bets", betList);
         request.setAttribute("amountOfPages", amountOfPages);

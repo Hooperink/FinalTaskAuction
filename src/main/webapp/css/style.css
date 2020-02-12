@@ -18,9 +18,8 @@ body {
 }
 
 .menu-main {
+    padding-left: 110px;
     list-style: none;
-    margin: 5px 0 5px;
-    padding: 0px 0 5px;
     text-align: center;
     background: white;
 }
@@ -107,8 +106,18 @@ body {
    margin:0;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: -20;
+    right: -13;
+    border: 3px solid #f1f1f1;
+    padding: 10px;
+    background-color: white;
+    text-align: center;
+}
 
 @media only screen and (min-width: 450px) and (max-width: 1000px) {
     .menu-main li {

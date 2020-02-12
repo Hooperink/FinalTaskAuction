@@ -41,7 +41,7 @@
                     </div>
                 </c:otherwise>
             </c:choose>
-	        <li><a href="${request.contextPath}controller?command=showCreateLotPage"> <fmt:message key="label.Create_lot"/></a></li>
+	        <li><a href="${request.contextPath}controller?command=showCreateLotPage"> <fmt:message key="label.Suggest_lot"/></a></li>
 	        <li><a href="${request.contextPath}controller?command=logout"> <fmt:message key="label.Logout"/></a></li>
 	        <div class="lang-container">
 	        <li>

@@ -22,7 +22,7 @@
                     <input type="hidden" name="command" value= "createLot">
                     <div class="input">
                         <div class="name-input">
-                            <div class="label"> <fmt:message key="label.Name"/>:</div>
+                            <div class="label"> <fmt:message key="label.Lot_name"/>:</div>
                             <input type="text" name="name" required minlength="5" maxlength="25">
                         </div>
                         <div class="price-input">
@@ -34,10 +34,11 @@
                         <div class="label"> <fmt:message key="label.Description"/>: </div>
                         <div class="description-input">
                             <fmt:message key="label.Enter_Description" var="enterDescription"/>
-                            <textarea name="description" placeholder= "${enterDescription}" cols="40" rows="15" required></textarea>
+                            <textarea name="description" placeholder= "${enterDescription}" cols="40" rows="15" required maxlength="240"></textarea>
                         </div>
                     </div>
-                    <input type="submit" value= <fmt:message key="label.Create_lot"/>>
+                     <fmt:message key="label.Suggest_lot" var="suggestLot"/>
+                    <input type="submit" value="${suggestLot}">
                 </form>
             </div>
         </div>

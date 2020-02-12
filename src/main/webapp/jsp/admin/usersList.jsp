@@ -20,12 +20,17 @@
                     <th><fmt:message key="label.Name"/>:</th>
                     <th><fmt:message key="label.Balance"/>:</th>
                     <th><fmt:message key="label.Role"/>:</th>
-                    <th><fmt:message key="label.Ban_status"/>:</th>
+                    <th><fmt:message key="label.Activity"/>:</th>
                     <c:forEach items="${users}" var="user" varStatus="loop">
                         <tr>
                             <td>"${user.login}"</td>
                             <td>"${user.balance}"</td>
-                            <td>"${user.role}"</td>
+                            <fmt:message key="label.Administrator" var="roleAdmin"/>
+                            <fmt:message key="label.User" var="roleUser"/>
+                            <td>"${user.role == 'ADMIN' ? roleAdmin : roleUser }"</td>
+                            <fmt:message key="label.Active" var="statusActive"/>
+                            <fmt:message key="label.Not_active" var="statusNotActive"/>
+                            <td>"${user.isActive ? statusActive : statusNotActive}"</td>
                             <td>
                                 <div class="button-container">
                                     <form name="activity" method="post" action="controller" id="activity${user.id}">

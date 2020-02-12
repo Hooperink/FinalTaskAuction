@@ -43,7 +43,7 @@
                     <input type="hidden" name="betId" value="${bet.id}"/>
                     <div class="info-container">
                         <div class="name-input">
-                            <div class="label"><fmt:message key="label.Name"/>:</div>
+                            <div class="label"><fmt:message key="label.Lot_name"/>:</div>
                             <input type="text" name="name" required minlength="5" maxlength="25" value="${lot.name}">
                         </div>
                         <div class="price-info">
@@ -74,7 +74,7 @@
                     <div class="description">
                         <div class="label"><fmt:message key="label.Description"/>: </div>
                         <div class="description-input">
-                            <textarea name="description" cols="40" rows="15" required>${lot.description}</textarea>
+                            <textarea name="description" cols="40" rows="15" required maxlength="240">${lot.description}</textarea>
                         </div>
                      </div>
                     <input type="submit" value= <fmt:message key="label.Edit"/>>
