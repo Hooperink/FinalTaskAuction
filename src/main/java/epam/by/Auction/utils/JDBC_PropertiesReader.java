@@ -15,9 +15,9 @@ public class JDBC_PropertiesReader {
 
     public final static Logger logger = LogManager.getLogger(ConnectionFactory.class.getName());
 
-    public static Map<String, String> getProperties () {
+    public static Map<String, String> getProperties (String path) {
         try {
-            FileInputStream fis = new FileInputStream("src/main/resources/connection.properties");
+            FileInputStream fis = new FileInputStream(path);
             Map <String, String> propertiesMap = new HashMap<>();
             Properties properties = new Properties();
             properties.load(fis);

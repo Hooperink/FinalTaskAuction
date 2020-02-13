@@ -17,7 +17,7 @@ public class ConnectionFactory {
     public static ProxyConnection create(ConnectionPool connectionPool) {
         Connection connection;
         try {
-            Map<String,String> properties = JDBC_PropertiesReader.getProperties();
+            Map<String,String> properties = JDBC_PropertiesReader.getProperties("src/main/resources/connection.properties");
             String driverName = properties.get("JDBC_DRIVER");
             String dbURL = properties.get("JDBC_DB_URL");
             String user = properties.get("JDBC_USER");
