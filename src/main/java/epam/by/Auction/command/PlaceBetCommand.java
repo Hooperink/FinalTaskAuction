@@ -32,6 +32,6 @@ public class PlaceBetCommand implements Command {
         } else {
             message = ConstantForBetService.NO_BET_SET;
         }
-        return CommandResult.redirect("r?command=getSingleLot&id=" + lotIdString +"&message=" + message);
+        return CommandResult.redirect("?command=getSingleLot&id=" + lotIdString +"&message=" + message);
     }
 }

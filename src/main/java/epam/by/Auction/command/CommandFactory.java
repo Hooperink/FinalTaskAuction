@@ -49,9 +49,13 @@ public class CommandFactory {
             case "updateAccount":
                 return new UpdateAccountCommand(new UserService(new DaoHelperFactory()));
             case "showUpdateAccountPage":
-                return new ShowPageCommand("/jsp/user/accountUpdatePage.jsp");
+                return new ShowPageCommand("/jsp/user/accountBalanceInfo.jsp");
+            case "showHistoryPage":
+                return new ShowPageCommand("/jsp/user/accountHistory.jsp");
             case "getAccountInfo":
                 return new GetAccountInfoCommand(new UserService(new DaoHelperFactory()), new LotService(new DaoHelperFactory()), new BetService(new DaoHelperFactory()));
+            case "getBalanceInfo":
+                return new GetBalanceInfoCommand(new UserService(new DaoHelperFactory()));
             default:
                 throw new UnknownCommandException("Unknown command " + command);
         }

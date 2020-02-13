@@ -18,7 +18,7 @@ public class LotDaoImpl extends AbstractDAO<Lot> implements LotDao {
             "start_sell_date=VALUES(start_sell_date), price=VALUES(price), status=VALUES(status), seller_id=VALUES(seller_id), " +
             "buyer_id=VALUES(buyer_id), description=VALUES(description), end_date_sell=VALUES(end_date_sell)";
     public static final String GET_ALL_LOTS_BY_ID = "SELECT * FROM lot WHERE seller_id = ?";
-    public static final String GET_ALL_LOTS_BY_STATUS_AND_ID = "SELECT * FROM lot WHERE buyer_id = ? AND status = ?";
+    public static final String GET_ALL_LOTS_BY_STATUS_AND_ID = "SELECT * FROM lot JOIN lot_Bet ON lot.id = lot_bet.lot_id WHERE lot_bet.buyer_id = ? AND lot.status = ?";
     public static final String GET_AMOUNT_OF_ROWS_BY_STATUS = "SELECT COUNT(*) AS count FROM lot WHERE status = ?";
 
     public LotDaoImpl(ProxyConnection proxyConnection) {

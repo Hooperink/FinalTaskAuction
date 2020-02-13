@@ -38,6 +38,12 @@
                                     </div>
                                     <fmt:formatDate value= "${lot.startSellDate}"/>
                                 </div>
+                                <div class="status">
+                                    <div class="status-label">
+                                        <fmt:message key="label.Status"/>:
+                                    </div>
+                                    <fmt:message key="label.${lot.status}"/>
+                                </div>
                             </div>
                             <div class="description">
                                 <div class="label"> <fmt:message key="label.Description"/>: </div>
@@ -90,6 +96,12 @@
                                         <fmt:message key="label.Start_of_sales"/>:
                                     </div>
                                     <fmt:formatDate value= "${lot.startSellDate}"/>
+                                </div>
+                                <div class="status">
+                                    <div class="status-label">
+                                        <fmt:message key="label.Status"/>:
+                                    </div>
+                                    <fmt:message key="label.${lot.status}"/>
                                 </div>
                             </div>
                             <fmt:message key="label.None" var="NoneValue"/>

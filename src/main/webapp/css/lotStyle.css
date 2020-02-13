@@ -8,8 +8,6 @@
     display: inline-block;
     margin: 3px;
     width: 24.25%;
-    overflow: hidden;
-    height: 430px;
 }
 
 .product-wrap {position: relative;}
@@ -98,7 +96,6 @@
     text-align: center;
 }
 .price {
-    font-family: "Open Sans";
     color: #162546;
     font-family: 'Ubuntu Condensed', sans-serif;
     font-weight: 800;
@@ -106,7 +103,7 @@
     display:inline-block;
 }
 .bet {
-    font-family: "Open Sans";
+    font-family: 'Ubuntu Condensed', sans-serif;
     padding: 0 10 0 10;
     color: #162546;
     font-style: italic;
@@ -120,7 +117,7 @@
 }
 
 .pagination {
-  font-family: "Open Sans";
+  font-family: 'Ubuntu Condensed', sans-serif;
   padding: 8px;
   text-align:center;
 }

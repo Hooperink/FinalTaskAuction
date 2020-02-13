@@ -25,6 +25,7 @@ public class ConnectionPool {
     private final static int INITIAL_POOL_SIZE = 10;
     private final Semaphore semaphore = new Semaphore(INITIAL_POOL_SIZE, true);
     private final static long TIMEOUT = 1;
+    private final ConnectionFactory connectionFactory = new ConnectionFactory();
 
     private ConnectionPool () {
         availableConnections = new ArrayDeque<>();
@@ -82,7 +83,7 @@ public class ConnectionPool {
     }
 
     private ProxyConnection getConnection() {
-        return ConnectionFactory.create(this);
+        return connectionFactory.create(this);
     }
 
 }

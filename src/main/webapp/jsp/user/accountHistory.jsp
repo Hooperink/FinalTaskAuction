@@ -27,20 +27,8 @@
                         <select name="status" onchange = 'this.form.submit()'>
                             <option value="ACTIVE" class="option-container" ${status == 'ACTIVE' ? 'selected="selected"' : ''} > <fmt:message key="label.Active"/> </option>
                             <option value="SOLD" class="option-container" ${status == 'SOLD' ? 'selected="selected"' : ''} > <fmt:message key="label.Sold"/> </option>
+                            <option value="DELETED" class="option-container" ${status == 'DELETED' ? 'selected="selected"' : ''} > <fmt:message key="label.Deleted"/> </option>
                         </select>
-                </form>
-            </div>
-            <div class="user-info-container">
-                <fmt:message key="label.Hello"/>, <b>${user.login}</b>,
-                <fmt:message key="label.your_balance_is"/>:
-                <ctg:currency-exchange currency="${user.balance}" locale ="${sessionScope.lang}"/>
-            </div>
-            <div class="update-account-container">
-                <form method="post" action="auction">
-                    <input type="hidden" name="command" value="updateAccount"/>
-                    <input type="text" name="amount" id="place-bet" required>
-                    <fmt:message key="label.Update_balance" var="UpdateBalance"/>
-                    <input type="submit" value= "${UpdateBalance}"/>
                 </form>
             </div>
             <div class="info-label"><fmt:message key="label.Your_bids_in_lots_with_status"/> <fmt:message key="label.${status}"/>:</div>
@@ -55,11 +43,12 @@
                         </c:forEach>
                         <button onclick='showDescription(${lot.id})'><fmt:message key="label.Show_description"/></button>
                         <div class="show-lot-button">
-                            <c:if test="${status != 'SOLD'}">
+                            <c:if test="${status == 'ACTIVE'}">
                                 <form action="auction" method="get">
                                     <input type="hidden" name="command" value="getSingleLot"/>
                                     <input type="hidden" name="id" value="${lot.id}"/>
-                                    <input type="submit" value=<fmt:message key="label.Show_lot_page"/>/>
+                                    <fmt:message key="label.Show_lot_page" var="showLotPage"/>
+                                    <input type="submit" value="${showLotPage}"/>
                                 </form>
                             </c:if>
                         </div>

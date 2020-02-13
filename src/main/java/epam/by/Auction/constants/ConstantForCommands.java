@@ -3,7 +3,7 @@ package epam.by.Auction.constants;
 public class ConstantForCommands {
 
     public static final String ID = "id";
-    public static final String LOT_ID = "lodId";
+    public static final String LOT_ID = "lotId";
     public static final String LOCALE = "locale";
     public static final String LANG = "lang";
     public static final String NAME = "name";

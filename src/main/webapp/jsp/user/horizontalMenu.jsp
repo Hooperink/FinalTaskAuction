@@ -36,6 +36,7 @@
                             <div class="dropdown-content">
                                 <a href="${request.contextPath}?command=getUserLots"> <fmt:message key="label.Your_lots"/></a>
                                 <a href="${request.contextPath}?command=getAccountInfo"> <fmt:message key="label.Account_info"/></a>
+                                <a href="${request.contextPath}?command=getBalanceInfo"> <fmt:message key="label.Balance_info"/></a>
                             </div>
                         </li>
                     </div>
