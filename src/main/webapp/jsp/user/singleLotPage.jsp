@@ -9,7 +9,7 @@
 	<head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <script type="text/javascript" src="${pageContext.request.contextPath}/js/inputValidator.js"></script>
-	    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createLot.css"/>
+	    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createLotUser.css"/>
 	    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	</head>
 	<body>
@@ -116,7 +116,7 @@
                             <div class="description">
                                 <div class="description-label"><fmt:message key="label.Description"/>: </div>
                                 <div class="description-input">
-                                    <textarea name="description" cols="40" rows="15" required>${lot.description}</textarea>
+                                    <textarea name="description" cols="40" rows="15" maxlength="240" required>${lot.description}</textarea>
                                 </div>
                              </div>
                             <input type="submit" value=<fmt:message key="label.Edit"/>>

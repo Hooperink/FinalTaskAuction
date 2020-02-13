@@ -1,7 +1,7 @@
 package epam.by.Auction.service;
 
 import epam.by.Auction.dao.impl.DaoHelper;
-import epam.by.Auction.dao.impl.DaoHelperFactory;
+import epam.by.Auction.dao.DaoHelperFactory;
 import epam.by.Auction.dao.api.UserDao;
 import epam.by.Auction.entity.User;
 import epam.by.Auction.exception.DaoException;

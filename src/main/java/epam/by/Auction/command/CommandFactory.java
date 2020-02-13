@@ -1,6 +1,6 @@
 package epam.by.Auction.command;
 
-import epam.by.Auction.dao.impl.DaoHelperFactory;
+import epam.by.Auction.dao.DaoHelperFactory;
 import epam.by.Auction.service.LotService;
 import epam.by.Auction.service.UserService;
 import epam.by.Auction.exception.UnknownCommandException;

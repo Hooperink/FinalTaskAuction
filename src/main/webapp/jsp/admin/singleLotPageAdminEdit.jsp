@@ -11,6 +11,7 @@
 	    <script type="text/javascript" src="${pageContext.request.contextPath}/js/inputValidator.js"></script>
 	    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/createLot.css"/>
+	    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/radioButtons.css"/>
 	</head>
 	<body>
         <div class = "all-wrap">
@@ -22,22 +23,27 @@
 
             <div class ="form-container">
                 <form name="edit-form" method="post" action="auction">
-                    <div class="dropdown-status">
+                    <c:if test="${lot.status != 'SOLD'}">
+                        <div class="dropdown-status">
                         <div class="status-label"><fmt:message key="label.Status"/>: </div>
-                        <c:if test="${lot.status == 'SOLD'}">
-                            <fmt:message key="label.Sold"/>
-                        </c:if>
-                        <c:if test="${lot.status != 'SOLD'}">
-                            <select name = "lotStatus">
-                                <option value="MODERATION" class="option-container" ${lot.status == 'MODERATION' ? 'selected="selected"' : ''}> <fmt:message key="label.Moderation"/> </option>
-                                <option value="ACTIVE" class="option-container" ${lot.status == 'ACTIVE' ? 'selected="selected"' : ''}> <fmt:message key="label.Active"/> </option>
-                                <option value="NOT_ACTIVE" class="option-container" ${lot.status == 'NOT_ACTIVE' ? 'selected="selected"' : ''}> <fmt:message key="label.Not_active"/> </option>
+                            <div class="switch-field">
+                                <input type="radio" id="radio-one" name="lotStatus" value="ACTIVE" ${lot.status == 'ACTIVE' ? 'checked' : ''}/>
+                                <label for="radio-one"><fmt:message key="label.Active"/></label>
+
+                                <input type="radio" id="radio-two" name="lotStatus" value="NOT_ACTIVE" ${lot.status == 'NOT_ACTIVE' ? 'checked' : ''}/>
+                                <label for="radio-two"><fmt:message key="label.Not_active"/></label>
+
+                                <input type="radio" id="radio-three" name="lotStatus" value="MODERATION" ${lot.status == 'MODERATION' ? 'checked' : ''}/>
+                                <label for="radio-three"><fmt:message key="label.Moderation"/></label>
+
                                 <c:if test="${bet != null}">
-                                    <option value="SOLD" class="option-container" ${lot.status == 'SOLD' ? 'selected="selected"' : ''}> <fmt:message key="label.Sold"/> </option>
+                                    <input type="radio" id="radio-four" name="lotStatus" value="SOLD" ${lot.status == 'SOLD' ? 'checked' : ''}/>
+                                    <label for="radio-four"><fmt:message key="label.Sold"/></label>
                                 </c:if>
-                            </select>
-                        </c:if>
-                    </div>
+                            </div>
+                        </div>
+                    </c:if>
+
                     <input type="hidden" name="command" value="editLot"/>
                     <input type="hidden" name="lotId" value="${lot.id}"/>
                     <input type="hidden" name="betId" value="${bet.id}"/>
@@ -72,7 +78,7 @@
                         </c:if>
                     </div>
                     <div class="description">
-                        <div class="label"><fmt:message key="label.Description"/>: </div>
+                        <div class="description-label"><fmt:message key="label.Description"/>: </div>
                         <div class="description-input">
                             <textarea name="description" cols="40" rows="15" required maxlength="240">${lot.description}</textarea>
                         </div>

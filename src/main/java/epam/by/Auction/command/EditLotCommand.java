@@ -24,14 +24,16 @@ public class EditLotCommand implements Command {
         String name = request.getParameter(ConstantForCommands.NAME);
         String description = request.getParameter(ConstantForCommands.DESCRIPTION);
         String lotStatusString = request.getParameter(ConstantForCommands.LOT_STATUS);
-        if (lotStatusString != null){
-            if (lotStatusString.equalsIgnoreCase(LotStatus.SOLD.getStatus())){
-                lotService.sellLot(lotId, name, description, lotStatusString);
+        if ((!name.equals("")) && (!description.equals(""))) {
+            if (lotStatusString != null) {
+                if (lotStatusString.equalsIgnoreCase(LotStatus.SOLD.getStatus())) {
+                    lotService.sellLot(lotId, name, description, lotStatusString);
+                } else {
+                    lotService.edit(lotId, name, description, lotStatusString);
+                }
             } else {
-                lotService.edit(lotId, name, description, lotStatusString);
+                lotService.edit(lotId, name, description);
             }
-        } else {
-            lotService.edit(lotId, name, description);
         }
         return CommandResult.redirect("?command=getSingleLot&id=" + lotIdStr);
     }

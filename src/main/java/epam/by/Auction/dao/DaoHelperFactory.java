@@ -1,6 +1,7 @@
-package epam.by.Auction.dao.impl;
+package epam.by.Auction.dao;
 
 import epam.by.Auction.connection.ConnectionPool;
+import epam.by.Auction.dao.impl.DaoHelper;
 
 public class DaoHelperFactory {
 
