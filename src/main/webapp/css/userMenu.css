@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');.form-container {
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+
+.form-container {
     text-align: center;
     margin: 10px;
 }

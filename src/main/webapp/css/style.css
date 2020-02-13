@@ -109,6 +109,7 @@ body {
 .dropdown:hover .dropdown-content {display: block;}
 
 .form-popup {
+    font-family: 'Ubuntu Condensed', sans-serif;
     display: none;
     position: fixed;
     bottom: -20;

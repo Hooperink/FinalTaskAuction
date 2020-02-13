@@ -23,7 +23,7 @@
             <c:choose>
                 <c:when test="${sessionScope.id != lot.sellerId}">
                     <div class ="form-container">
-                        <form name="edit-form" method="post" action="controller">
+                        <form name="edit-form" method="post" action="auction">
                             <input type="hidden" name="command" value="placeBet"/>
                             <input type="hidden" name="lotId" value="${lot.id}"/>
                             <input type="hidden" name="betId" value="${bet.id}"/>
@@ -72,7 +72,7 @@
                 </c:when>
                 <c:otherwise>
                     <div class ="form-container">
-                        <form name="edit-form" method="post" action="controller">
+                        <form name="edit-form" method="post" action="auction">
                             <input type="hidden" name="command" value="editLot"/>
                             <input type="hidden" name="lotId" value="${lot.id}"/>
                             <input type="hidden" name="betId" value="${bet.id}"/>

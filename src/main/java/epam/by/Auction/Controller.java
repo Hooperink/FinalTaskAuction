@@ -51,7 +51,7 @@ public class Controller extends HttpServlet {
         } catch (IOException e) {
             logger.error("IOException. " + e);
         } catch (ServletException e) {
-            logger.error("Servlet error . " + e);
+            logger.error("Servlet error. " + e);
         }
     }
 }

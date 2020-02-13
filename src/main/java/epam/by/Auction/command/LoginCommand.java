@@ -7,6 +7,7 @@ import epam.by.Auction.exception.DaoException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Locale;
 import java.util.Optional;
 
 public class LoginCommand implements Command {
@@ -29,10 +30,17 @@ public class LoginCommand implements Command {
                 session.setAttribute("role", user.getRole());
                 session.setAttribute("id", user.getId());
                 session.setAttribute("isActive", user.getIsActive());
-                session.setAttribute("lang", "en_US");
-                return CommandResult.redirect("/?command=showMainPage");
+                Locale locale = request.getLocale();
+                if ("be".equals(locale.getLanguage())) {
+                    session.setAttribute("lang", "be_BY");
+                } else if("en".equals(locale.getLanguage())) {
+                    session.setAttribute("lang", "en_US");
+                } else {
+                    session.setAttribute("lang", "ru_Ru");
+                }
+                return CommandResult.redirect("?command=showMainPage");
             }
         }
-        return CommandResult.redirect("controller?command=showLoginPage");
+        return CommandResult.redirect("?command=showLoginPage");
     }
 }

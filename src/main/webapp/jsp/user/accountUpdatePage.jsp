@@ -21,7 +21,7 @@
         </header>
         <div class="all-info-container">
             <div class="status-container">
-                <form method="get" action="controller">
+                <form method="get" action="auction">
                     <input type="hidden" name="command" value="getAccountInfo">
                     <div class="status-label"><fmt:message key="label.Status"/>:</div>
                         <select name="status" onchange = 'this.form.submit()'>
@@ -36,7 +36,7 @@
                 <ctg:currency-exchange currency="${user.balance}" locale ="${sessionScope.lang}"/>
             </div>
             <div class="update-account-container">
-                <form method="post" action="controller">
+                <form method="post" action="auction">
                     <input type="hidden" name="command" value="updateAccount"/>
                     <input type="text" name="amount" id="place-bet" required>
                     <fmt:message key="label.Update_balance" var="UpdateBalance"/>
@@ -56,7 +56,7 @@
                         <button onclick='showDescription(${lot.id})'><fmt:message key="label.Show_description"/></button>
                         <div class="show-lot-button">
                             <c:if test="${status != 'SOLD'}">
-                                <form action="controller" method="get">
+                                <form action="auction" method="get">
                                     <input type="hidden" name="command" value="getSingleLot"/>
                                     <input type="hidden" name="id" value="${lot.id}"/>
                                     <input type="submit" value=<fmt:message key="label.Show_lot_page"/>/>

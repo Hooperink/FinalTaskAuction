@@ -32,6 +32,6 @@ public class EditLotCommand implements Command {
         } else {
             lotService.edit(lotId, name, description);
         }
-        return CommandResult.redirect("controller?command=getSingleLot&id=" + lotIdStr);
+        return CommandResult.redirect("?command=getSingleLot&id=" + lotIdStr);
     }
 }

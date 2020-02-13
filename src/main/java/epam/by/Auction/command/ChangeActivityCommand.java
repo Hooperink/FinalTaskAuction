@@ -19,6 +19,6 @@ public class ChangeActivityCommand implements Command {
         String userIdString = request.getParameter("id");
         long id = Long.parseLong(userIdString);
         userService.changeActivity(id);
-        return CommandResult.redirect("controller?command=getUsers");
+        return CommandResult.redirect("?command=getUsers");
     }
 }

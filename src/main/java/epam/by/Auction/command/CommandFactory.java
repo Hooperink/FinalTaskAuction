@@ -21,7 +21,7 @@ public class CommandFactory {
             case "getListLot":
                 return new GetListLotCommand(new LotService(new DaoHelperFactory()), new BetService(new DaoHelperFactory()));
             case "showLoginPage":
-                return new ShowPageCommand("/login.jsp");
+                return new ShowPageCommand("/jsp/login.jsp");
             case "showSingleLotPage":
                 return new ShowPageCommand("/jsp/user/singleLotPage.jsp");
             case "showCreateLotPage":

@@ -25,6 +25,6 @@ public class CreateLotCommand implements Command {
         HttpSession session = request.getSession();
         long userId = (long) session.getAttribute("id");
         lotService.save(name, description, price, userId);
-        return CommandResult.redirect("controller?command=showSuccessCreatePage");
+        return CommandResult.redirect("?command=showSuccessCreatePage");
     }
 }

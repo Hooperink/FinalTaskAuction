@@ -10,15 +10,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.js</url-pattern>
+        <url-pattern>/auction/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
     </servlet-mapping>
     <filter>
         <filter-name>CharsetFilter</filter-name>
@@ -54,4 +54,12 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/jsp/error/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/jsp/error/500.jsp</location>
+    </error-page>
 </web-app>

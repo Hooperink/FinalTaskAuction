@@ -18,7 +18,7 @@
                 <jsp:include page="horizontalMenu.jsp" />
             </header>
             <div class ="form-container">
-                <form name="lot-form" action="controller" method="post">
+                <form name="lot-form" action="auction" method="post">
                     <input type="hidden" name="command" value= "createLot">
                     <div class="input">
                         <div class="name-input">

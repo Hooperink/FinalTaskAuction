@@ -19,14 +19,14 @@
             <c:forEach items="${lots}" var="lot">
                 <div class="border">
                     <div class="product-wrap">
-                        <a href="${request.contextPath}controller?command=getSingleLot&id=${lot.id}"><img src="https://185504.selcdn.ru/static/dolinaroz.reshop.by/catalog/764/4818233015c3519b99ec8f_medium.jpg"></a>
+                        <a href="${request.contextPath}?command=getSingleLot&id=${lot.id}"><img src="https://185504.selcdn.ru/static/dolinaroz.reshop.by/catalog/764/4818233015c3519b99ec8f_medium.jpg"></a>
                         <div class="loop-action">
-                            <a href="${request.contextPath}controller?command=getSingleLot&id=${lot.id}" class="add-to-cart"><fmt:message key="label.Show_lot"/></a>
+                            <a href="${request.contextPath}?command=getSingleLot&id=${lot.id}" class="add-to-cart"><fmt:message key="label.Show_lot"/></a>
                             <c:if test="${sessionScope.role == 'ADMIN'}">
                                 <a href="#" onclick="openForm(${lot.id}); return false;"><fmt:message key="label.Delete"/></a>
                                 <div class="form-popup" id="${lot.id}">
                                     <fmt:message key="label.Are_you_sure?"/>
-                                    <a href="${request.contextPath}controller?command=deleteLot&id=${lot.id}"> <fmt:message key="label.Delete"/></a>
+                                    <a href="${request.contextPath}?command=deleteLot&id=${lot.id}"> <fmt:message key="label.Delete"/></a>
                                     <a href="#" onclick="closeForm(${lot.id}); return false;"><fmt:message key="label.Close"/></a>
                                 </div>
                             </c:if>
@@ -52,7 +52,7 @@
             <div class="pagination">
                 <div class="previous-pagination">
                     <c:if test="${currentPage != 1}">
-                        <a href="${request.contextPath}controller?command=getListLot&page=${currentPage - 1}"> <fmt:message key="label.Previous"/></a>
+                        <a href="${request.contextPath}?command=getListLot&page=${currentPage - 1}"> <fmt:message key="label.Previous"/></a>
                     </c:if>
                 </div>
                 <div class="number-pagination">
@@ -62,14 +62,14 @@
                                 <div class = "active">${i}</div>
                             </c:when>
                             <c:otherwise>
-                                <a href="${request.contextPath}controller?command=getListLot&page=${i}">${i}</a>
+                                <a href="${request.contextPath}?command=getListLot&page=${i}">${i}</a>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
                 </div>
                 <div class="next-pagination">
                     <c:if test="${currentPage lt amountOfPages}">
-                        <a href="${request.contextPath}controller?command=getListLot&page=${currentPage + 1}"> <fmt:message key="label.Next"/></a>
+                        <a href="${request.contextPath}?command=getListLot&page=${currentPage + 1}"> <fmt:message key="label.Next"/></a>
                     </c:if>
                 </div>
             </div>

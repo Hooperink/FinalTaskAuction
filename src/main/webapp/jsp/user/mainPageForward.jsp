@@ -13,7 +13,7 @@
 	<body>
         <header>
         </header>
-        <jsp:forward page="/controller">
+        <jsp:forward page="/auction">
             <jsp:param name="command" value="getListLot"/>
         </jsp:forward>
 	</body>

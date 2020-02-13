@@ -11,6 +11,6 @@ public class ChangeLanguage implements Command {
         String language = request.getParameter("locale");
         HttpSession session = request.getSession();
         session.setAttribute("lang", language);
-        return CommandResult.redirect("controller?command=showMainPage");
+        return CommandResult.redirect("?command=showMainPage");
     }
 }

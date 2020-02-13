@@ -9,6 +9,7 @@
 	<head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	    <script type="text/javascript" src="${pageContext.request.contextPath}/js/inputValidator.js"></script>
+	    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/successPage.css"/>
 	    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	</head>
 	<body>
@@ -16,7 +17,14 @@
         <header>
             <jsp:include page="horizontalMenu.jsp" />
         </header>
-            SUCCESS!
+        <div class="message-container">
+            <div class="message-label">
+                <fmt:message key="label.Your_lot_is_suggested"/>
+            </div>
+            <div class="link-container">
+                <a href="${request.contextPath}?command=showMainPage"><fmt:message key="label.Main_Menu"/></a>
+            </div>
+        </div>
         </body>
     </div>
 	<footer>

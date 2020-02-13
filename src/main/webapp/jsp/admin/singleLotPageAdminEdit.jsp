@@ -21,7 +21,7 @@
             <c:set var="bet" value='${requestScope.bet}' />
 
             <div class ="form-container">
-                <form name="edit-form" method="post" action="controller">
+                <form name="edit-form" method="post" action="auction">
                     <div class="dropdown-status">
                         <div class="status-label"><fmt:message key="label.Status"/>: </div>
                         <c:if test="${lot.status == 'SOLD'}">

@@ -10,6 +10,6 @@ public class LogoutCommand implements Command {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession httpSession = request.getSession();
         httpSession.invalidate();
-        return CommandResult.redirect("controller?command=showLoginPage");
+        return CommandResult.redirect("?command=showLoginPage");
     }
 }

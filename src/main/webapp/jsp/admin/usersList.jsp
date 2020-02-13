@@ -33,7 +33,7 @@
                             <td>"${user.isActive ? statusActive : statusNotActive}"</td>
                             <td>
                                 <div class="button-container">
-                                    <form name="activity" method="post" action="controller" id="activity${user.id}">
+                                    <form name="activity" method="post" action="auction" id="activity${user.id}">
                                         <input type="hidden" name="id" value="${user.id}">
                                         <input type="hidden" name="command" value="changeActivity">
                                             <label class="switch" onchange="document.getElementById('activity${user.id}').submit();">

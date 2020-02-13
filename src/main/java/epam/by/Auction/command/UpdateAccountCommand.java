@@ -28,6 +28,6 @@ public class UpdateAccountCommand implements Command {
                 userService.updateAccount(id, amountToAddToBalance);
             }
         }
-        return CommandResult.redirect("controller?command=showMainPage");
+        return CommandResult.redirect("?command=showMainPage");
     }
 }

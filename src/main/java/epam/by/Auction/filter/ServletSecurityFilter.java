@@ -23,11 +23,19 @@ public class ServletSecurityFilter implements Filter {
             isActive = (boolean) session.getAttribute("isActive");
         }
         boolean loggedIn = session != null && session.getAttribute("role") != null;
-        if ((loggedIn && isActive) || (command != null && command.equals("showLoginPage") || (command != null && command.equals("login")))) {
+        String uri = request.getRequestURI();
+        if (uri.startsWith("/css") || uri.startsWith("/js")) {
             filterChain.doFilter(request, response);
+        } else if (uri.startsWith("/auction")){
+            if ((loggedIn && isActive) || (command != null && command.equals("showLoginPage") || (command != null && command.equals("login")))) {
+                filterChain.doFilter(request, response);
+            } else {
+                response.sendRedirect("?command=showLoginPage");
+            }
         } else {
-            response.sendRedirect("controller?command=showLoginPage");
+            request.getRequestDispatcher("/auction" + uri).forward(request, response);
         }
+
     }
 
     @Override

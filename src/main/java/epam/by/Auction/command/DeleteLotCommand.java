@@ -25,6 +25,6 @@ public class DeleteLotCommand implements Command {
             lotService.remove(id);
             return CommandResult.forward("/jsp/user/mainPageForward.jsp");
         }
-        return CommandResult.redirect("controller?command=showMainPage");
+        return CommandResult.redirect("?command=showMainPage");
     }
 }
