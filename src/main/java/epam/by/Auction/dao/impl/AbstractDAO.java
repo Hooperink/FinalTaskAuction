@@ -61,7 +61,7 @@ public abstract class AbstractDAO <T extends Identifiable> implements Dao<T> {
     @Override
     public void removeById(long id) throws DaoException {
         String table = getTableName();
-        try(PreparedStatement preparedStatement = proxyConnection.prepareStatement("delete from " + table + " where id = ?")) {
+        try(PreparedStatement preparedStatement = proxyConnection.prepareStatement("DELETE FROM " + table + " WHERE id = ?")) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
 

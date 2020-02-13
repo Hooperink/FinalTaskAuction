@@ -1,6 +1,7 @@
 package epam.by.Auction.command;
 
 import epam.by.Auction.constants.ConstantForBetService;
+import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.service.BetService;
 import epam.by.Auction.exception.DaoException;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -19,11 +20,11 @@ public class PlaceBetCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException {
-        String lotIdString = request.getParameter("lotId");
+        String lotIdString = request.getParameter(ConstantForCommands.LOT_ID);
         long lotId = Long.parseLong(lotIdString.trim());
         HttpSession session = request.getSession();
-        long newBidderUserId = (long) session.getAttribute("id");
-        String bidderBetString = request.getParameter("betAmount");
+        long newBidderUserId = (long) session.getAttribute(ConstantForCommands.ID);
+        String bidderBetString = request.getParameter(ConstantForCommands.BET_AMOUNT);
         String message;
         if (NumberUtils.isCreatable(bidderBetString)) {
             BigDecimal newBidderBet = new BigDecimal(bidderBetString);

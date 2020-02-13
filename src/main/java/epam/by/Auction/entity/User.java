@@ -2,6 +2,7 @@ package epam.by.Auction.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class User implements Serializable, Identifiable {
     public static final String TABLE = "user";
@@ -76,5 +77,27 @@ public class User implements Serializable, Identifiable {
                 ", balance=" + balance +
                 ", role=" + role +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return isActive == user.isActive &&
+                Objects.equals(id, user.id) &&
+                Objects.equals(login, user.login) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(balance, user.balance) &&
+                role == user.role;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, password, isActive, balance, role);
     }
 }

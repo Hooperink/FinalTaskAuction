@@ -1,5 +1,6 @@
 package epam.by.Auction.command;
 
+import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.entity.Bet;
 import epam.by.Auction.service.BetService;
 import epam.by.Auction.service.LotService;
@@ -29,16 +30,16 @@ public class GetAccountInfoCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException {
         HttpSession session = request.getSession();
-        long userId = (long)session.getAttribute("id");
-        String status = request.getParameter("status");
+        long userId = (long)session.getAttribute(ConstantForCommands.ID);
+        String status = request.getParameter(ConstantForCommands.STATUS);
         LotStatus lotStatus = status == null ? LotStatus.ACTIVE: LotStatus.valueOf(status);
         List<Lot> lots = lotService.getLotsByStatusAndUserId(userId, lotStatus);
         Optional<User> optionalUser = userService.findById(userId);
         List<Bet> bets = betService.getAllUserBetsByUserIdAndLotStatus(userId, lotStatus);
-        optionalUser.ifPresent(user -> request.setAttribute("user", user));
-        request.setAttribute("status", lotStatus.toString());
-        request.setAttribute("lots", lots);
-        request.setAttribute("bets", bets);
+        optionalUser.ifPresent(user -> request.setAttribute(ConstantForCommands.USER, user));
+        request.setAttribute(ConstantForCommands.STATUS, lotStatus.toString());
+        request.setAttribute(ConstantForCommands.LOTS, lots);
+        request.setAttribute(ConstantForCommands.BETS, bets);
         return CommandResult.forward("/jsp/user/accountUpdatePage.jsp");
     }
 }

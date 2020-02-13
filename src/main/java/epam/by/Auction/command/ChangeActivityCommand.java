@@ -1,5 +1,6 @@
 package epam.by.Auction.command;
 
+import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.service.UserService;
 import epam.by.Auction.exception.DaoException;
 
@@ -16,7 +17,7 @@ public class ChangeActivityCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException {
-        String userIdString = request.getParameter("id");
+        String userIdString = request.getParameter(ConstantForCommands.ID);
         long id = Long.parseLong(userIdString);
         userService.changeActivity(id);
         return CommandResult.redirect("?command=getUsers");

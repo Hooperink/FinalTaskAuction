@@ -1,5 +1,6 @@
 package epam.by.Auction.command;
 
+import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.entity.UserRole;
 import epam.by.Auction.exception.DaoException;
 import epam.by.Auction.service.LotService;
@@ -18,9 +19,9 @@ public class DeleteLotCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException {
         HttpSession session = request.getSession();
-        UserRole role = (UserRole) session.getAttribute("role");
+        UserRole role = (UserRole) session.getAttribute(ConstantForCommands.ROLE);
         if (role == UserRole.ADMIN) {
-            String lotId = request.getParameter("id");
+            String lotId = request.getParameter(ConstantForCommands.ID);
             long id = Long.parseLong(lotId);
             lotService.remove(id);
             return CommandResult.forward("/jsp/user/mainPageForward.jsp");

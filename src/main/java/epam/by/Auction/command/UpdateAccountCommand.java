@@ -1,5 +1,6 @@
 package epam.by.Auction.command;
 
+import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.service.UserService;
 import epam.by.Auction.exception.DaoException;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -20,8 +21,8 @@ public class UpdateAccountCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException {
         HttpSession session = request.getSession();
-        long id = (long) session.getAttribute("id");
-        String updateAmount = request.getParameter("amount");
+        long id = (long) session.getAttribute(ConstantForCommands.ID);
+        String updateAmount = request.getParameter(ConstantForCommands.AMOUNT);
         if (NumberUtils.isCreatable(updateAmount)){
             BigDecimal amountToAddToBalance = new BigDecimal(updateAmount);
             if (amountToAddToBalance.compareTo(BigDecimal.ZERO) > 0){

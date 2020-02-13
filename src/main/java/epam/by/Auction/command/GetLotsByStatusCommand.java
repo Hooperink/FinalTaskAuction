@@ -1,5 +1,6 @@
 package epam.by.Auction.command;
 
+import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.entity.Lot;
 import epam.by.Auction.entity.LotStatus;
 import epam.by.Auction.service.LotService;
@@ -20,18 +21,18 @@ public class GetLotsByStatusCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException {
-        String status = request.getParameter("status");
-        String pageString = request.getParameter("page");
+        String status = request.getParameter(ConstantForCommands.STATUS);
+        String pageString = request.getParameter(ConstantForCommands.PAGE);
         int page =  NumberUtils.isCreatable(pageString) ? Integer.parseInt(pageString) - 1 : 0;
         int recordPerPage = 8;
         LotStatus lotStatus = LotStatus.valueOf(status);
         int amountOfRows = lotService.getAmountOfRows(lotStatus);
         int amountOfPages = (int) Math.ceil(amountOfRows * 1.0 / recordPerPage);
         List<Lot> lotsList  = lotService.getLotByStatus(lotStatus, recordPerPage, recordPerPage * page);
-        request.setAttribute("status", status);
-        request.setAttribute("lots", lotsList);
-        request.setAttribute("amountOfPages", amountOfPages);
-        request.setAttribute("currentPage", page + 1);
+        request.setAttribute(ConstantForCommands.STATUS, status);
+        request.setAttribute(ConstantForCommands.LOTS, lotsList);
+        request.setAttribute(ConstantForCommands.AMOUNT_OF_PAGES, amountOfPages);
+        request.setAttribute(ConstantForCommands.CURRENT_PAGE, page + 1);
         return CommandResult.forward("/jsp/admin/forListAdminPage.jsp");
     }
 }
