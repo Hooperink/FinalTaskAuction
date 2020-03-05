@@ -5,13 +5,17 @@ import epam.by.Auction.dao.DaoHelperFactory;
 import epam.by.Auction.dao.api.BetDao;
 import epam.by.Auction.dao.api.LotDao;
 import epam.by.Auction.dao.api.UserDao;
-import epam.by.Auction.entity.Bet;
-import epam.by.Auction.entity.Lot;
-import epam.by.Auction.entity.LotStatus;
-import epam.by.Auction.entity.User;
+import epam.by.Auction.dto.Bet;
+import epam.by.Auction.dto.Lot;
+import epam.by.Auction.dto.LotStatus;
+import epam.by.Auction.dto.User;
 import epam.by.Auction.exception.DaoException;
+import epam.by.Auction.utils.FileNameGetterFromPart;
+import epam.by.Auction.utils.FilePartSaver;
 import epam.by.Auction.utils.UserBalanceCalculator;
 
+import javax.servlet.http.Part;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -88,10 +92,12 @@ public class LotService {
         }
     }
 
-    public void save(String name, String description, BigDecimal price, long userId) throws DaoException {
+    public void save(String name, String description, BigDecimal price, long userId, Part part) throws DaoException, IOException {
         try (DaoHelper daoHelper = daoHelperFactory.create()) {
             LotDao lotDao = daoHelper.createLotDao();
-            Lot lot = createLot(name, description, price, userId);
+            FilePartSaver filePartSaver = new FilePartSaver(new FileNameGetterFromPart());
+            String imagePath = filePartSaver.saveFile(part);
+            Lot lot = createLot(name, description, price, userId, imagePath);
             lotDao.save(lot);
         }
     }
@@ -167,7 +173,7 @@ public class LotService {
         return lot;
     }
 
-    private Lot createLot(String name, String description, BigDecimal price, long userId) {
+    private Lot createLot(String name, String description, BigDecimal price, long userId, String imagePath) {
         Lot lot = new Lot();
         lot.setName(name);
         lot.setDescription(description);
@@ -176,6 +182,8 @@ public class LotService {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         lot.setStartSellDate(timestamp);
         lot.setSellerId(userId);
+        lot.setImagePath(imagePath);
         return lot;
     }
+
 }

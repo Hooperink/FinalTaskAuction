@@ -1,4 +1,4 @@
-package epam.by.Auction.entity;
+package epam.by.Auction.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -15,6 +15,7 @@ public class Lot implements Serializable, Identifiable {
     public static final String DESCRIPTION = "description";
     public static final String SELLER_ID = "seller_id";
     public static final String BUYER_ID = "buyer_id";
+    public static final String IMAGE_PATH = "image_path";
 
     private Long id;
     private Long sellerId;
@@ -25,6 +26,15 @@ public class Lot implements Serializable, Identifiable {
     private BigDecimal price;
     private LotStatus status;
     private String description;
+    private String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public Long getSellerId() {
         return sellerId;

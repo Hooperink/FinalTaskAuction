@@ -1,4 +1,4 @@
-package epam.by.Auction.entity;
+package epam.by.Auction.dto;
 
 public enum LotStatus {
     MODERATION("moderation"),

@@ -3,7 +3,7 @@ package epam.by.Auction.dao.impl;
 import epam.by.Auction.dao.api.LotDao;
 import epam.by.Auction.mapper.LotRowMapper;
 import epam.by.Auction.connection.ProxyConnection;
-import epam.by.Auction.entity.Lot;
+import epam.by.Auction.dto.Lot;
 import epam.by.Auction.exception.DaoException;
 
 import java.sql.PreparedStatement;
@@ -13,10 +13,10 @@ import java.util.List;
 public class LotDaoImpl extends AbstractDAO<Lot> implements LotDao {
 
     public static final String GET_BY_STATUS = "SELECT * FROM lot WHERE status = ? LIMIT ? OFFSET ?";
-    public static final String SAVE_LOT = "INSERT INTO lot (id, name, start_sell_date, price, status, seller_id, buyer_id, description, end_date_sell) " +
-            "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE id=VALUES(id), name=VALUES(name)," +
+    public static final String SAVE_LOT = "INSERT INTO lot (id, name, start_sell_date, price, status, seller_id, buyer_id, description, end_date_sell, image_path) " +
+            "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE id=VALUES(id), name=VALUES(name)," +
             "start_sell_date=VALUES(start_sell_date), price=VALUES(price), status=VALUES(status), seller_id=VALUES(seller_id), " +
-            "buyer_id=VALUES(buyer_id), description=VALUES(description), end_date_sell=VALUES(end_date_sell)";
+            "buyer_id=VALUES(buyer_id), description=VALUES(description), end_date_sell=VALUES(end_date_sell), image_path=VALUES(image_path)";
     public static final String GET_ALL_LOTS_BY_ID = "SELECT * FROM lot WHERE seller_id = ?";
     public static final String GET_ALL_LOTS_BY_STATUS_AND_ID = "SELECT * FROM lot JOIN lot_Bet ON lot.id = lot_bet.lot_id WHERE lot_bet.buyer_id = ? AND lot.status = ?";
     public static final String GET_AMOUNT_OF_ROWS_BY_STATUS = "SELECT COUNT(*) AS count FROM lot WHERE status = ?";

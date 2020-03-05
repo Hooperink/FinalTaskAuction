@@ -5,6 +5,7 @@ import epam.by.Auction.command.CommandFactory;
 import epam.by.Auction.command.CommandResult;
 import epam.by.Auction.connection.ConnectionFactory;
 import epam.by.Auction.exception.DaoException;
+import epam.by.Auction.exception.PageNotFoundException;
 import epam.by.Auction.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,11 +13,15 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@MultipartConfig(fileSizeThreshold=1024*1024*2,
+maxFileSize=1024*1024*10,
+maxRequestSize=1024*1024*50)
 public class Controller extends HttpServlet {
 
     public final static Logger logger = LogManager.getLogger(ConnectionFactory.class.getName());
@@ -45,13 +50,18 @@ public class Controller extends HttpServlet {
             }
         } catch (DaoException e) {
             logger.error("Error in DAO. " + e);
-            //TODO: error page
         } catch (ServiceException e) {
             logger.error("Error in service. " + e);
         } catch (IOException e) {
             logger.error("IOException. " + e);
         } catch (ServletException e) {
             logger.error("Servlet error. " + e);
+        } catch (PageNotFoundException e) {
+            try {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            } catch (IOException ex) {
+                logger.error("IOException. " + e);
+            }
         }
     }
 }

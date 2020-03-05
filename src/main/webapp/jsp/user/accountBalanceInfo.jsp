@@ -19,17 +19,6 @@
             <jsp:include page="horizontalMenu.jsp" />
         </header>
         <div class="all-info-container">
-            <div class="status-container">
-                <form method="get" action="auction">
-                    <input type="hidden" name="command" value="getAccountInfo">
-                    <div class="status-label"><fmt:message key="label.Status"/>:</div>
-                        <select name="status" onchange = 'this.form.submit()'>
-                            <option value="ACTIVE" class="option-container" ${status == 'ACTIVE' ? 'selected="selected"' : ''} > <fmt:message key="label.Active"/> </option>
-                            <option value="SOLD" class="option-container" ${status == 'SOLD' ? 'selected="selected"' : ''} > <fmt:message key="label.Sold"/> </option>
-                            <option value="DELETED" class="option-container" ${status == 'DELETED' ? 'selected="selected"' : ''} > <fmt:message key="label.Deleted"/> </option>
-                        </select>
-                </form>
-            </div>
             <div class="user-info-container">
                 <fmt:message key="label.Hello"/>, <b>${user.login}</b>,
                 <fmt:message key="label.your_balance_is"/>:

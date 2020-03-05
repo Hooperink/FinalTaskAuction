@@ -1,10 +1,11 @@
 package epam.by.Auction.command;
 
 import epam.by.Auction.constants.ConstantForCommands;
-import epam.by.Auction.entity.Bet;
-import epam.by.Auction.entity.Lot;
-import epam.by.Auction.entity.User;
-import epam.by.Auction.entity.UserRole;
+import epam.by.Auction.dto.Bet;
+import epam.by.Auction.dto.Lot;
+import epam.by.Auction.dto.User;
+import epam.by.Auction.dto.UserRole;
+import epam.by.Auction.exception.PageNotFoundException;
 import epam.by.Auction.service.BetService;
 import epam.by.Auction.service.LotService;
 import epam.by.Auction.service.UserService;
@@ -28,11 +29,20 @@ public class GetSingleLotCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws DaoException, PageNotFoundException {
         HttpSession session = request.getSession();
         UserRole role = (UserRole) session.getAttribute(ConstantForCommands.ROLE);
         String lotIdString = request.getParameter(ConstantForCommands.ID);
+
+        //Message for result output of setting bet
         String message = request.getParameter(ConstantForCommands.MESSAGE);
+        String error = request.getParameter(ConstantForCommands.ERROR);
+        if (message != null) {
+            request.setAttribute(ConstantForCommands.MESSAGE, message);
+        } else if (error != null) {
+            request.setAttribute(ConstantForCommands.ERROR, error);
+        }
+
         request.setAttribute(ConstantForCommands.MESSAGE, message);
         long lotId = Long.parseLong(lotIdString.trim());
         Optional<Lot> lot = lotService.findLotById(lotId);
@@ -42,7 +52,11 @@ public class GetSingleLotCommand implements Command {
             Optional<User> bidder = userService.findById(bet.get().getBuyerId());
             bidder.ifPresent(user -> request.setAttribute(ConstantForCommands.BIDDER, user));
         }
-        lot.ifPresent(x -> request.setAttribute(ConstantForCommands.LOT, x));
+        if (lot.isPresent()) {
+            request.setAttribute(ConstantForCommands.LOT, lot.get());
+        } else {
+            throw new PageNotFoundException();
+        }
         if (role == UserRole.ADMIN) {
             return CommandResult.forward("/jsp/admin/singleLotPageAdminEdit.jsp");
         }

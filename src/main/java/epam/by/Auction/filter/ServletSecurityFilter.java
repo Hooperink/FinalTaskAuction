@@ -24,10 +24,13 @@ public class ServletSecurityFilter implements Filter {
         }
         boolean loggedIn = session != null && session.getAttribute("role") != null;
         String uri = request.getRequestURI();
-        if (uri.startsWith("/css") || uri.startsWith("/js")) {
+        if (uri.startsWith("/css") || uri.startsWith("/js") || uri.startsWith("/images")) {
             filterChain.doFilter(request, response);
         } else if (uri.startsWith("/auction")){
-            if ((loggedIn && isActive) || (command != null && command.equals("showLoginPage") || (command != null && command.equals("login")))) {
+            if ((loggedIn && isActive) || (command != null && command.equals("showLoginPage")
+                    || (command != null && command.equals("login")))
+                    || (command != null && command.equals("showRegistrationPage"))
+                    || (command != null && command.equals("register"))) {
                 filterChain.doFilter(request, response);
             } else {
                 response.sendRedirect("?command=showLoginPage");

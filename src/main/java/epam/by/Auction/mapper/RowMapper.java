@@ -1,9 +1,9 @@
 package epam.by.Auction.mapper;
 
-import epam.by.Auction.entity.Bet;
-import epam.by.Auction.entity.Identifiable;
-import epam.by.Auction.entity.Lot;
-import epam.by.Auction.entity.User;
+import epam.by.Auction.dto.Bet;
+import epam.by.Auction.dto.Identifiable;
+import epam.by.Auction.dto.Lot;
+import epam.by.Auction.dto.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ public interface RowMapper<T extends Identifiable> {
     T map (ResultSet resultSet) throws SQLException;
     List<Object> getFieldsToSave(T item);
 
-    public static RowMapper<? extends Identifiable> create(String table) {
+    static RowMapper<? extends Identifiable> create(String table) {
         switch (table) {
             case User.TABLE:
                 return new UserRowMapper();

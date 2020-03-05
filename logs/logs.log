@@ -1,0 +1,4 @@
+[ERROR] 2020-03-03 16:22:38.199 [http-bio-8888-exec-1] ConnectionFactory - Servlet error. org.apache.jasper.JasperException: /jsp/user/registrationForm.jsp (line: 25, column: 55) Unterminated &lt;c:if tag
+[ERROR] 2020-03-03 16:22:40.675 [http-bio-8888-exec-3] ConnectionFactory - Servlet error. org.apache.jasper.JasperException: java.lang.ClassNotFoundException: org.apache.jsp.jsp.user.registrationForm_jsp
+[ERROR] 2020-03-03 16:24:50.898 [http-bio-8888-exec-5] ConnectionFactory - Servlet error. org.apache.jasper.JasperException: /jsp/user/registrationForm.jsp (line: 25, column: 57) Unterminated &lt;c:if tag
+[ERROR] 2020-03-03 16:24:51.533 [http-bio-8888-exec-6] ConnectionFactory - Servlet error. org.apache.jasper.JasperException: java.lang.ClassNotFoundException: org.apache.jsp.jsp.user.registrationForm_jsp

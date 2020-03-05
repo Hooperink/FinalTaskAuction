@@ -28,5 +28,6 @@ public class ConstantForCommands {
     public static final String CURRENT_PAGE = "currentPage";
     public static final String BET_AMOUNT = "betAmount";
     public static final String AMOUNT = "amount";
+    public static final String ERROR = "error";
     private ConstantForCommands() {}
 }

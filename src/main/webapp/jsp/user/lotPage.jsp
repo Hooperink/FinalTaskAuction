@@ -19,7 +19,7 @@
             <c:forEach items="${lots}" var="lot">
                 <div class="border">
                     <div class="product-wrap">
-                        <a href="${request.contextPath}?command=getSingleLot&id=${lot.id}"><img src="https://185504.selcdn.ru/static/dolinaroz.reshop.by/catalog/764/4818233015c3519b99ec8f_medium.jpg"></a>
+                        <a href="${request.contextPath}?command=getSingleLot&id=${lot.id}"><img src="${pageContext.request.contextPath}/images/${lot.imagePath}"></a>
                         <div class="loop-action">
                             <a href="${request.contextPath}?command=getSingleLot&id=${lot.id}" class="add-to-cart"><fmt:message key="label.Show_lot"/></a>
                             <c:if test="${sessionScope.role == 'ADMIN'}">

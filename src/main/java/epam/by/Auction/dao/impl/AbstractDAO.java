@@ -3,7 +3,7 @@ package epam.by.Auction.dao.impl;
 import epam.by.Auction.connection.ProxyConnection;
 import epam.by.Auction.dao.api.Dao;
 import epam.by.Auction.mapper.RowMapper;
-import epam.by.Auction.entity.Identifiable;
+import epam.by.Auction.dto.Identifiable;
 import epam.by.Auction.exception.DaoException;
 
 import java.sql.PreparedStatement;

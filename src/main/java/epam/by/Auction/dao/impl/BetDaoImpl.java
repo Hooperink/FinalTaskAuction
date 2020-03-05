@@ -1,7 +1,7 @@
 package epam.by.Auction.dao.impl;
 
 import epam.by.Auction.dao.api.BetDao;
-import epam.by.Auction.entity.Bet;
+import epam.by.Auction.dto.Bet;
 import epam.by.Auction.mapper.BetRowMapper;
 import epam.by.Auction.connection.ProxyConnection;
 import epam.by.Auction.exception.DaoException;

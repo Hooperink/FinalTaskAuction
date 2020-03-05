@@ -18,7 +18,7 @@
                 <jsp:include page="horizontalMenu.jsp" />
             </header>
             <div class ="form-container">
-                <form name="lot-form" action="auction" method="post">
+                <form name="lot-form" action="auction" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="command" value= "createLot">
                     <div class="input">
                         <div class="name-input">
@@ -37,7 +37,8 @@
                             <textarea name="description" placeholder= "${enterDescription}" cols="40" rows="15" required maxlength="240"></textarea>
                         </div>
                     </div>
-                     <fmt:message key="label.Suggest_lot" var="suggestLot"/>
+                    <input type="file" name="filecover" value="Upload"/>
+                    <fmt:message key="label.Suggest_lot" var="suggestLot"/>
                     <input type="submit" value="${suggestLot}">
                 </form>
             </div>

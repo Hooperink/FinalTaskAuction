@@ -5,6 +5,15 @@
     margin: 10px;
 }
 
+.image-container img {
+    max-height: 400px;
+    min-height: 400px;
+}
+
+.image-container {
+    margin: 20px;
+}
+
 .description-container {
     margin: 15 0 15 25%;
     width: 50%;

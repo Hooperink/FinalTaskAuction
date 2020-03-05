@@ -1,4 +1,4 @@
-package epam.by.Auction.entity;
+package epam.by.Auction.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

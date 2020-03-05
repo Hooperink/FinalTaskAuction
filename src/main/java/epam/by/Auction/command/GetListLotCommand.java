@@ -2,9 +2,9 @@ package epam.by.Auction.command;
 
 import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.service.LotService;
-import epam.by.Auction.entity.Bet;
-import epam.by.Auction.entity.Lot;
-import epam.by.Auction.entity.LotStatus;
+import epam.by.Auction.dto.Bet;
+import epam.by.Auction.dto.Lot;
+import epam.by.Auction.dto.LotStatus;
 import epam.by.Auction.exception.DaoException;
 import epam.by.Auction.service.BetService;
 import org.apache.commons.lang3.math.NumberUtils;

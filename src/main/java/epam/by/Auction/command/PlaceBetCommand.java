@@ -1,7 +1,8 @@
 package epam.by.Auction.command;
 
-import epam.by.Auction.constants.ConstantForBetService;
 import epam.by.Auction.constants.ConstantForCommands;
+import epam.by.Auction.errors.ErrorCodeForMessage;
+import epam.by.Auction.exception.MessageErrorException;
 import epam.by.Auction.service.BetService;
 import epam.by.Auction.exception.DaoException;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -25,13 +26,26 @@ public class PlaceBetCommand implements Command {
         HttpSession session = request.getSession();
         long newBidderUserId = (long) session.getAttribute(ConstantForCommands.ID);
         String bidderBetString = request.getParameter(ConstantForCommands.BET_AMOUNT);
-        String message;
+        String message = null;
+        String error = null;
         if (NumberUtils.isCreatable(bidderBetString)) {
             BigDecimal newBidderBet = new BigDecimal(bidderBetString);
-            message = betService.placeBet(lotId, newBidderUserId, newBidderBet);
+            try {
+                if (betService.placeBet(lotId, newBidderUserId, newBidderBet)) {
+                    message = "Success";
+                } else {
+                    error = ErrorCodeForMessage.ERROR_6.name();
+                }
+            } catch (MessageErrorException e) {
+                error = e.getMessage();
+            }
         } else {
-            message = ConstantForBetService.NO_BET_SET;
+            error = ErrorCodeForMessage.ERROR_7.name();
         }
-        return CommandResult.redirect("?command=getSingleLot&id=" + lotIdString +"&message=" + message);
+        if (error != null) {
+            return CommandResult.redirect("?command=getSingleLot&id=" + lotIdString +"&error=" + error);
+        } else {
+            return CommandResult.redirect("?command=getSingleLot&id=" + lotIdString +"&message=" + message);
+        }
     }
 }

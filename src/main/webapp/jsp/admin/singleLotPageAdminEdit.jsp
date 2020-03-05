@@ -23,27 +23,6 @@
 
             <div class ="form-container">
                 <form name="edit-form" method="post" action="auction">
-                    <c:if test="${lot.status != 'SOLD'}">
-                        <div class="dropdown-status">
-                        <div class="status-label"><fmt:message key="label.Status"/>: </div>
-                            <div class="switch-field">
-                                <input type="radio" id="radio-one" name="lotStatus" value="ACTIVE" ${lot.status == 'ACTIVE' ? 'checked' : ''}/>
-                                <label for="radio-one"><fmt:message key="label.Active"/></label>
-
-                                <input type="radio" id="radio-two" name="lotStatus" value="NOT_ACTIVE" ${lot.status == 'NOT_ACTIVE' ? 'checked' : ''}/>
-                                <label for="radio-two"><fmt:message key="label.Not_active"/></label>
-
-                                <input type="radio" id="radio-three" name="lotStatus" value="MODERATION" ${lot.status == 'MODERATION' ? 'checked' : ''}/>
-                                <label for="radio-three"><fmt:message key="label.Moderation"/></label>
-
-                                <c:if test="${bet != null}">
-                                    <input type="radio" id="radio-four" name="lotStatus" value="SOLD" ${lot.status == 'SOLD' ? 'checked' : ''}/>
-                                    <label for="radio-four"><fmt:message key="label.Sold"/></label>
-                                </c:if>
-                            </div>
-                        </div>
-                    </c:if>
-
                     <input type="hidden" name="command" value="editLot"/>
                     <input type="hidden" name="lotId" value="${lot.id}"/>
                     <input type="hidden" name="betId" value="${bet.id}"/>
@@ -76,6 +55,29 @@
                                 <fmt:formatDate value= "${lot.endSellDate}" pattern="MM/dd/yyyy HH:mm"/>
                              </div>
                         </c:if>
+                    </div>
+                    <c:if test="${lot.status != 'SOLD'}">
+                        <div class="dropdown-status">
+                        <div class="status-label"><fmt:message key="label.Status"/>: </div>
+                            <div class="switch-field">
+                                <input type="radio" id="radio-one" name="lotStatus" value="ACTIVE" ${lot.status == 'ACTIVE' ? 'checked' : ''}/>
+                                <label for="radio-one"><fmt:message key="label.Active"/></label>
+
+                                <input type="radio" id="radio-two" name="lotStatus" value="NOT_ACTIVE" ${lot.status == 'NOT_ACTIVE' ? 'checked' : ''}/>
+                                <label for="radio-two"><fmt:message key="label.Not_active"/></label>
+
+                                <input type="radio" id="radio-three" name="lotStatus" value="MODERATION" ${lot.status == 'MODERATION' ? 'checked' : ''}/>
+                                <label for="radio-three"><fmt:message key="label.Moderation"/></label>
+
+                                <c:if test="${bet != null}">
+                                    <input type="radio" id="radio-four" name="lotStatus" value="SOLD" ${lot.status == 'SOLD' ? 'checked' : ''}/>
+                                    <label for="radio-four"><fmt:message key="label.Sold"/></label>
+                                </c:if>
+                            </div>
+                        </div>
+                    </c:if>
+                    <div class="image-container">
+                        <img src="${pageContext.request.contextPath}/images/${lot.imagePath}">
                     </div>
                     <div class="description">
                         <div class="description-label"><fmt:message key="label.Description"/>: </div>

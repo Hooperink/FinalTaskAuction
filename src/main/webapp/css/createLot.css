@@ -5,6 +5,15 @@
     margin: 10px;
 }
 
+.image-container img {
+    max-height: 400px;
+    min-height: 400px;
+}
+
+.image-container {
+    margin: 20px;
+}
+
 .description-container {
     margin: 15 0 15 25%;
     width: 50%;
@@ -93,9 +102,9 @@ input[type=submit] {
 }
 
 .dropdown-status {
-    float: right;
-    padding-right: 15px;
     padding-top: 20px;
+    display: inline-block;
+    height: 30px;
 }
 
 .status-label {
@@ -118,12 +127,12 @@ input[type=submit] {
 .end-date {
     font-family: 'Ubuntu Condensed', sans-serif;
     display: inline-block;
+    padding-left: 10px;
 }
 
 .info-container {
     padding-top: 10px;
     padding-bottom: 5px;
-    margin-left: 400px;
 }
 
 .price-info {
@@ -177,10 +186,8 @@ input[type=submit] {
 }
 
 .description-label {
-    	width: 10%;
-        display: inline-block;
-        margin-left: 29%;
-    }
+
+}
 
 @media only screen and (min-width: 450px) and (max-width: 1000px) {
     .bet-label {

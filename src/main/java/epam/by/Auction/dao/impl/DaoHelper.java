@@ -47,6 +47,7 @@ public class DaoHelper implements AutoCloseable {
             proxyConnection.commit();
             proxyConnection.setAutoCommit(true);
         } catch (SQLException e) {
+            rollbackQuery();
             throw new DaoException(e);
         }
     }

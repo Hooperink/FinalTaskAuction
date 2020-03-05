@@ -45,6 +45,9 @@
                                     <fmt:message key="label.${lot.status}"/>
                                 </div>
                             </div>
+                            <div class="image-container">
+                                <img src="${pageContext.request.contextPath}/images/${lot.imagePath}">
+                            </div>
                             <div class="description">
                                 <div class="label"> <fmt:message key="label.Description"/>: </div>
                                 <div class="description-container">
@@ -73,6 +76,10 @@
                         </form>
                         <c:if test="${requestScope.message != null}">
                             <div class="message-container"><fmt:message key="label.${requestScope.message}"/></div>
+                        </c:if>
+
+                        <c:if test="${requestScope.error != null}">
+                            <div class="message-container"><fmt:message key="error.${requestScope.error}"/></div>
                         </c:if>
                     </div>
                 </c:when>
@@ -112,6 +119,9 @@
                             <div class="bidder-container">
                                 <div class="label"><fmt:message key="label.Bidder"/>: </div>
                                 <c:out value= "${user.login == null ? NoneValue : user.login}"/>
+                            </div>
+                            <div class="image-container">
+                                <img src="${pageContext.request.contextPath}/images/${lot.imagePath}">
                             </div>
                             <div class="description">
                                 <div class="description-label"><fmt:message key="label.Description"/>: </div>

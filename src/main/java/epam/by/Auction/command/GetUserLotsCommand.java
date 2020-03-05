@@ -2,7 +2,7 @@ package epam.by.Auction.command;
 
 import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.service.LotService;
-import epam.by.Auction.entity.Lot;
+import epam.by.Auction.dto.Lot;
 import epam.by.Auction.exception.DaoException;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,6 +1,6 @@
 package epam.by.Auction.mapper;
 
-import epam.by.Auction.entity.Bet;
+import epam.by.Auction.dto.Bet;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;

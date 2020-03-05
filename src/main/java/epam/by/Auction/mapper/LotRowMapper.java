@@ -1,7 +1,7 @@
 package epam.by.Auction.mapper;
 
-import epam.by.Auction.entity.Lot;
-import epam.by.Auction.entity.LotStatus;
+import epam.by.Auction.dto.Lot;
+import epam.by.Auction.dto.LotStatus;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
@@ -24,6 +24,7 @@ public class LotRowMapper implements RowMapper<Lot> {
         long sellerId = resultSet.getLong(Lot.SELLER_ID);
         long buyerId = resultSet.getLong(Lot.BUYER_ID);
         String description = resultSet.getString(Lot.DESCRIPTION);
+        String imagePath = resultSet.getString(Lot.IMAGE_PATH);
 
         Lot lot = new Lot();
         lot.setId(id);
@@ -35,6 +36,7 @@ public class LotRowMapper implements RowMapper<Lot> {
         lot.setDescription(description);
         lot.setBuyerId(buyerId == 0 ? null : buyerId);
         lot.setSellerId(sellerId);
+        lot.setImagePath(imagePath);
         return lot;
     }
 
@@ -50,6 +52,7 @@ public class LotRowMapper implements RowMapper<Lot> {
         objectsToSave.add(item.getBuyerId());
         objectsToSave.add(item.getDescription());
         objectsToSave.add(item.getEndSellDate());
+        objectsToSave.add(item.getImagePath());
         return objectsToSave;
     }
 }

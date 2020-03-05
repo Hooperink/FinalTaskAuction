@@ -1,6 +1,6 @@
 package epam.by.Auction.dao.api;
 
-import epam.by.Auction.entity.Identifiable;
+import epam.by.Auction.dto.Identifiable;
 import epam.by.Auction.exception.DaoException;
 
 import java.util.List;

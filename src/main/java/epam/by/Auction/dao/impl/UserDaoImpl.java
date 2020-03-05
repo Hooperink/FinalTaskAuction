@@ -3,7 +3,7 @@ package epam.by.Auction.dao.impl;
 import epam.by.Auction.dao.api.UserDao;
 import epam.by.Auction.mapper.UserRowMapper;
 import epam.by.Auction.connection.ProxyConnection;
-import epam.by.Auction.entity.User;
+import epam.by.Auction.dto.User;
 import epam.by.Auction.exception.DaoException;
 
 import java.util.Optional;
@@ -11,6 +11,7 @@ import java.util.Optional;
 public class UserDaoImpl extends AbstractDAO<User> implements UserDao {
 
     private static final String FIND_BY_LOGIN_AND_PASSWORD = "SELECT * FROM user WHERE login = ? AND password = ?";
+    private static final String FIND_BY_LOGIN = "SELECT * FROM user WHERE login = ?";
     private static final String SAVE_USER = "insert into user(login, password, is_active, balance) " +
             "VALUES(?, ?, ?, ?) ON DUPLICATE KEY UPDATE login=VALUES(login), password=VALUES(password), " +
             "is_active=VALUES(is_active), balance=VALUES(balance)";
@@ -18,6 +19,11 @@ public class UserDaoImpl extends AbstractDAO<User> implements UserDao {
 
     public UserDaoImpl(ProxyConnection proxyConnection) {
         super(proxyConnection);
+    }
+
+    @Override
+    public Optional<User> findUserByLogin(String login) throws DaoException {
+        return executeGetForSingleResult(FIND_BY_LOGIN, new UserRowMapper(), login);
     }
 
     @Override

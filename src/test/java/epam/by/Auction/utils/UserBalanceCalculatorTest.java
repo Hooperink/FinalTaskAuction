@@ -1,6 +1,6 @@
 package epam.by.Auction.utils;
 
-import epam.by.Auction.entity.User;
+import epam.by.Auction.dto.User;
 import org.junit.Test;;
 import java.math.BigDecimal;
 

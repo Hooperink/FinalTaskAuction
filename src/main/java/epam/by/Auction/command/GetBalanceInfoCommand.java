@@ -1,19 +1,13 @@
 package epam.by.Auction.command;
 
 import epam.by.Auction.constants.ConstantForCommands;
-import epam.by.Auction.entity.Bet;
-import epam.by.Auction.service.BetService;
-import epam.by.Auction.service.LotService;
 import epam.by.Auction.service.UserService;
-import epam.by.Auction.entity.Lot;
-import epam.by.Auction.entity.LotStatus;
-import epam.by.Auction.entity.User;
+import epam.by.Auction.dto.User;
 import epam.by.Auction.exception.DaoException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Optional;
 
 public class GetBalanceInfoCommand implements Command {

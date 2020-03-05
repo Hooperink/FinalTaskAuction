@@ -2,22 +2,22 @@ package epam.by.Auction.service;
 
 import epam.by.Auction.dao.impl.DaoHelper;
 import epam.by.Auction.dao.DaoHelperFactory;
-import epam.by.Auction.entity.LotStatus;
+import epam.by.Auction.dto.LotStatus;
+import epam.by.Auction.errors.ErrorCodeForMessage;
+import epam.by.Auction.exception.MessageErrorException;
 import epam.by.Auction.utils.UserBalanceCalculator;
 import epam.by.Auction.dao.api.BetDao;
 import epam.by.Auction.dao.impl.BetDaoImpl;
 import epam.by.Auction.dao.api.LotDao;
 import epam.by.Auction.dao.api.UserDao;
-import epam.by.Auction.entity.Bet;
-import epam.by.Auction.entity.Lot;
-import epam.by.Auction.entity.User;
+import epam.by.Auction.dto.Bet;
+import epam.by.Auction.dto.Lot;
+import epam.by.Auction.dto.User;
 import epam.by.Auction.exception.DaoException;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-
-import static epam.by.Auction.constants.ConstantForBetService.*;
 
 public class BetService {
 
@@ -54,7 +54,7 @@ public class BetService {
         }
     }
 
-    public String placeBet(long lotId, long newUserId, BigDecimal newBet) throws DaoException {
+    public boolean placeBet(long lotId, long newUserId, BigDecimal newBet) throws DaoException, MessageErrorException {
         try (DaoHelper daoHelper = daoHelperFactory.create()) {
             BetDao betDao = daoHelper.createBetDao();
             UserDao userDao = daoHelper.createUserDao();
@@ -71,7 +71,7 @@ public class BetService {
             } else if (newUser.isPresent() & lot.isPresent()) {
                 return createNewBet(newUser.get(), newBet, lot.get(), daoHelper);
             }
-            return NOTHING_HAPPENED;
+            return false;
         }
     }
 
@@ -89,7 +89,7 @@ public class BetService {
         daoHelper.endTransaction();
     }
 
-    private String replaceExistingBet(Bet bet, User newUser, User oldUser, BigDecimal newBet, DaoHelper daoHelper) throws DaoException {
+    private boolean replaceExistingBet(Bet bet, User newUser, User oldUser, BigDecimal newBet, DaoHelper daoHelper) throws DaoException, MessageErrorException {
         BigDecimal newUserBalance = newUser.getBalance();
         long newUserId = newUser.getId();
         long oldUserId = oldUser.getId();
@@ -102,40 +102,36 @@ public class BetService {
                    bet.setBet(newBet);
                    bet.setBuyerId(newUserId);
                    saveUserAndBet(daoHelper, oldUser, newUser, bet);
-                   return SUCCESS;
+                   return true;
                } else {
-                   return ALREADY_PLACED;
+                   throw new MessageErrorException(ErrorCodeForMessage.ERROR_2.name());
                }
            } else {
-               return LOWER_THAN_SHOULD;
+               throw new MessageErrorException(ErrorCodeForMessage.ERROR_3.name());
            }
         } else {
-            return NOT_ENOUGH_MONEY;
+            throw new MessageErrorException(ErrorCodeForMessage.ERROR_4.name());
         }
     }
-    private String createNewBet(User newUser, BigDecimal newBetAmount, Lot lot, DaoHelper daoHelper) throws DaoException {
+    private boolean createNewBet(User newUser, BigDecimal newBetAmount, Lot lot, DaoHelper daoHelper) throws DaoException, MessageErrorException {
         BigDecimal newUserBalance = newUser.getBalance();
         long newUserId = newUser.getId();
         long lotId = lot.getId();
         BigDecimal lotPrice = lot.getPrice();
-        if(newUserBalance.compareTo(lotPrice) >= 0) {
-            if(newUserBalance.compareTo(newBetAmount) >= 0) {
-                if(newBetAmount.compareTo(lotPrice) >= 0) {
-                    Bet bet = new Bet();
-                    bet.setBet(newBetAmount);
-                    bet.setBuyerId(newUserId);
-                    bet.setLotId(lotId);
-                    newUser = userBalanceCalculator.subtractFromBalance(newUser, newBetAmount);
-                    saveUserAndBet(daoHelper, newUser, bet);
-                    return SUCCESS;
-                } else {
-                    return BET_LOWER_THEN_PRICE;
-                }
+        if(newUserBalance.compareTo(lotPrice) >= 0 || newUserBalance.compareTo(newBetAmount) >= 0) {
+            if(newBetAmount.compareTo(lotPrice) >= 0) {
+                Bet bet = new Bet();
+                bet.setBet(newBetAmount);
+                bet.setBuyerId(newUserId);
+                bet.setLotId(lotId);
+                newUser = userBalanceCalculator.subtractFromBalance(newUser, newBetAmount);
+                saveUserAndBet(daoHelper, newUser, bet);
+                return true;
             } else {
-                return NOT_ENOUGH_MONEY;
+                throw new MessageErrorException(ErrorCodeForMessage.ERROR_5.name());
             }
         } else {
-            return NOT_ENOUGH_MONEY;
+            throw new MessageErrorException(ErrorCodeForMessage.ERROR_4.name());
         }
     }
 }

@@ -1,7 +1,7 @@
 package epam.by.Auction.command;
 
 import epam.by.Auction.constants.ConstantForCommands;
-import epam.by.Auction.entity.UserRole;
+import epam.by.Auction.dto.UserRole;
 import epam.by.Auction.exception.DaoException;
 import epam.by.Auction.service.LotService;
 
