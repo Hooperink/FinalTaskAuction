@@ -1,7 +1,7 @@
 package epam.by.Auction.mapper;
 
 import epam.by.Auction.dto.User;
-import epam.by.Auction.dto.UserRole;
+import epam.by.Auction.dto.enums.UserRole;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;

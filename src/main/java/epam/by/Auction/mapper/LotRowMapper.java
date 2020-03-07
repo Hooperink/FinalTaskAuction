@@ -1,7 +1,7 @@
 package epam.by.Auction.mapper;
 
 import epam.by.Auction.dto.Lot;
-import epam.by.Auction.dto.LotStatus;
+import epam.by.Auction.dto.enums.LotStatus;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;

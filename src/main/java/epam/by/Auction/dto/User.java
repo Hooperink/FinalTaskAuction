@@ -1,5 +1,7 @@
 package epam.by.Auction.dto;
 
+import epam.by.Auction.dto.enums.UserRole;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;

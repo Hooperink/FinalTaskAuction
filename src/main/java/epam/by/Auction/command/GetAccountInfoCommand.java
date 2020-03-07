@@ -6,7 +6,7 @@ import epam.by.Auction.service.BetService;
 import epam.by.Auction.service.LotService;
 import epam.by.Auction.service.UserService;
 import epam.by.Auction.dto.Lot;
-import epam.by.Auction.dto.LotStatus;
+import epam.by.Auction.dto.enums.LotStatus;
 import epam.by.Auction.dto.User;
 import epam.by.Auction.exception.DaoException;
 

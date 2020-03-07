@@ -4,7 +4,7 @@ import epam.by.Auction.constants.ConstantForCommands;
 import epam.by.Auction.dto.Bet;
 import epam.by.Auction.dto.Lot;
 import epam.by.Auction.dto.User;
-import epam.by.Auction.dto.UserRole;
+import epam.by.Auction.dto.enums.UserRole;
 import epam.by.Auction.exception.PageNotFoundException;
 import epam.by.Auction.service.BetService;
 import epam.by.Auction.service.LotService;

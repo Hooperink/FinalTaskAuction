@@ -36,8 +36,7 @@ public class CommandFactory {
     private final static String GET_BALANCE_INFO = "getBalanceInfo";
     private final static String SHOW_REGISTRATION_PAGE = "showRegistrationPage";
     private final static String REGISTRATION = "register";
-
-
+    
     public static Command create(String command) throws UnknownCommandException {
         switch (command) {
             case CHANGE_LANGUAGE:

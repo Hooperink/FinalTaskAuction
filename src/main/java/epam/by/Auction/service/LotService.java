@@ -7,7 +7,7 @@ import epam.by.Auction.dao.api.LotDao;
 import epam.by.Auction.dao.api.UserDao;
 import epam.by.Auction.dto.Bet;
 import epam.by.Auction.dto.Lot;
-import epam.by.Auction.dto.LotStatus;
+import epam.by.Auction.dto.enums.LotStatus;
 import epam.by.Auction.dto.User;
 import epam.by.Auction.exception.DaoException;
 import epam.by.Auction.utils.FileNameGetterFromPart;

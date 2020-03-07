@@ -2,7 +2,7 @@ package epam.by.Auction.service;
 
 import epam.by.Auction.dao.impl.DaoHelper;
 import epam.by.Auction.dao.DaoHelperFactory;
-import epam.by.Auction.dto.LotStatus;
+import epam.by.Auction.dto.enums.LotStatus;
 import epam.by.Auction.errors.ErrorCodeForMessage;
 import epam.by.Auction.exception.MessageErrorException;
 import epam.by.Auction.utils.UserBalanceCalculator;

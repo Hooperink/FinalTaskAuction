@@ -1,6 +1,6 @@
 package epam.by.Auction.filter;
 
-import epam.by.Auction.dto.UserRole;
+import epam.by.Auction.dto.enums.UserRole;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
