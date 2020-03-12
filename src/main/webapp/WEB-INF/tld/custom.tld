@@ -7,7 +7,7 @@
     <uri>customtags</uri>
     <tag>
             <name>currency-exchange</name>
-            <tag-class>epam.by.Auction.tags.CurrencyTag</tag-class>
+            <tag-class>by.epam.auction.tags.CurrencyTag</tag-class>
             <body-content>empty</body-content>
             <attribute>
                 <name>currency</name>

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored ="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/custom.tld" %>
 
 <fmt:setBundle basename="messages"/>
 <fmt:setLocale value="${sessionScope.lang}" scope="session"/>
@@ -35,11 +36,11 @@
                     <div class="product-info">
                         <div class="product-title"><c:out value="${lot.name}"/></div>
                         <div class="price-bet-container">
-                            <div class="price"> <fmt:message key="label.Start_bet"/>: ${lot.price}</div>
+                            <div class="price"> <fmt:message key="label.Start_bet"/>: <ctg:currency-exchange currency="${lot.price}" locale ="${sessionScope.lang}"/></div>
                             <c:forEach items="${bets}" var="bet">
                                 <c:if test="${lot.id == bet.lotId}">
                                     <div class="bet">
-                                         <fmt:message key="label.Current_bet"/>: <c:out value= "${bet.bet}"/>
+                                         <fmt:message key="label.Current_bet"/>: <ctg:currency-exchange currency="${bet.bet}" locale ="${sessionScope.lang}"/>
                                     </div>
                                 </c:if>
                             </c:forEach>
